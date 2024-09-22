@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+    margin-top: 20%;
+}
+
+h1{
+    font-size: 7.5em;
+    margin-bottom: 0;
+}
+
+button{
+    font-size: 1.5em;
+    padding: 10px;
+    color: blue;
+    border: 0;
+}
+
+button:hover{
+    background-color: aquamarine;
+    border: 1px solid black;
+}
