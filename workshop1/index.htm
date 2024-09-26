@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+    <h1>Welcome to our Finance Manager</h1>
+    <p class="bal">Balance : <span> 0.00</span></p>
+
+    <div class="add_container">
+        <input type="text" name="" id="des" placeholder="Description" required>
+        <input type="number" name="" id="amount" placeholder="amount" required>
+        <select name="type" id="type" required>
+            <option value="income">income</option>
+            <option value="expense">expense</option>
+        </select>
+        <button id="add">add transaction</button>
+    </div>
+
+    <h2>Transactions</h2>
+
+    <table id="myTable">
+        <tr class="header">
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td  id="hide" colspan="4">
+                 <img src="https://karunakarpusuluri.github.io/personal_finance_tracker/no-data1.png" alt="">
+                 <p>No Transactions yet</p>
+            </td>
+        </tr>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <button onclick="generatePDF()">Export to PDF</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
