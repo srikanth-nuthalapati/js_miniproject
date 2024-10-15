@@ -256,6 +256,10 @@ let data = [
     },
 ]
 
+    
+   
+loginPage.classList.add("active");
+
 let mediaLoginPage = document.querySelector(".container .menu #media-login");
 
 mediaLoginPage.addEventListener("click",()=>{

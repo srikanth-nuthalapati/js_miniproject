@@ -554,6 +554,9 @@ header ul li:hover{
         position: absolute;
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
+    .container .book-ticket form #date::placeholder{
+        content: "dd-mm-yyyy";
+    }
     .container .book-ticket form.media, label{
         display: none;
     }
@@ -600,14 +603,16 @@ header ul li:hover{
         height: 300px;
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
+    .container .pnr-check form label{
+        display: block;
+        font-size: 25px;
+    }
     .container .pnr-check form.media{
         display: none;
     }
     .container .pnr-check .pnr-status{
         width: 250px;
         height: 350px;
-        /* position: absolute; */
-        /* bottom: 40px; */
         display: flex !important;
         flex-direction: column;
         justify-content: space-around;
@@ -647,7 +652,7 @@ header ul li:hover{
     }
     .container .search-train h2{
         margin: 0;
-        font-size: 15px;
+        font-size: 20px;
     }
     .container .search-train #train-search-result{
         font-size: 14px;
@@ -665,8 +670,11 @@ header ul li:hover{
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
     .container .login-page h2{
-        font-size: 15px;
+        font-size: 20px;
         margin-bottom: 0;
+    }
+    .container .login-page input{
+        margin-left: 30px;
     }
     .container .sign-up.active{
         position: relative;
