@@ -314,6 +314,8 @@ bookingbtn.addEventListener("click",(e)=>{
                         BookedTicketClass.textContent = `Class : ${SelectedClass.value}`;
                         BookedTicketDate.textContent = `Date : ${SelectedDate.value}`;
                         ticketContainer.style.display = "block";
+                        bookingForm.classList.add("media");
+
 
                         let obj = {
                             "train_no": data[i].Train_no,
@@ -540,13 +542,10 @@ mediaBookPage.addEventListener("click",()=>{
     loginPage.classList.remove("active");
     registerPage.classList.remove("active");
     TrainSearchPage.classList.remove("active");
+    bookingForm.classList.remove("media");
 });
 
 let bookingForm = document.querySelector(".container .book-ticket form");
-
-bookingbtn.addEventListener("click",()=>{
-    // bookingForm.classList.add("media");
-});
 
 let mediaPnrPage = document.querySelector(".container .menu #media-pnr");
 

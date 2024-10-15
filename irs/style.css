@@ -475,9 +475,12 @@ header ul li:hover{
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 700px) {
+    .body{
+        overflow: hidden !important;
+    }
     .container{
-        width: 350px;
+        width: 360px;
         height: 100vh;
         background-size: cover;
         background-position: center;
@@ -489,7 +492,7 @@ header ul li:hover{
     }
     .container .menu{
         position: relative;
-        left: 300px;
+        left: 310px;
         width: 50px;
         height: 50px;
         background-color: #08ffe7;
@@ -500,7 +503,8 @@ header ul li:hover{
         width: 200px;
         height: 260px;
         position: absolute;
-        left: 150px;
+        left: 160px;
+        z-index: 1;
         background-color: #08ffe7;
         display: block !important;
         animation: comes 0.5s ease-in 0s 1;
@@ -536,7 +540,6 @@ header ul li:hover{
     .container .book-ticket.active{
         width: 100%;
         display: flex;
-        align-items: center;
     }
     .container .book-ticket form br{
         display: none;
@@ -549,7 +552,6 @@ header ul li:hover{
         justify-content: space-around;
         align-items: center;
         position: absolute;
-        bottom: 25px;
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
     .container .book-ticket form.media, label{
@@ -565,7 +567,7 @@ header ul li:hover{
         width: 250px;
         height: 380px;
         position: relative;
-        top: 60px;
+        /* top: 60px; */
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
     .container .book-ticket .booking-details h1{
@@ -596,8 +598,6 @@ header ul li:hover{
     .container .pnr-check form{
         width: 250px;
         height: 300px;
-        position: absolute;
-        bottom: 90px;
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
     .container .pnr-check form.media{
@@ -606,8 +606,8 @@ header ul li:hover{
     .container .pnr-check .pnr-status{
         width: 250px;
         height: 350px;
-        position: absolute;
-        bottom: 40px;
+        /* position: absolute; */
+        /* bottom: 40px; */
         display: flex !important;
         flex-direction: column;
         justify-content: space-around;
@@ -639,7 +639,7 @@ header ul li:hover{
     .container .search-train{
         position: absolute;
         left: 15px;
-        top: 300px;
+        /* top: 300px; */
         width: 280px;
         height: 300px;
         row-gap: 5px;
@@ -655,7 +655,7 @@ header ul li:hover{
     .container .login-page.active{
         position: absolute;
         left: 10px;
-        top: 250px;
+        /* top: 250px; */
         width: 280px;
         height: 300px;
         display: flex;
@@ -675,7 +675,7 @@ header ul li:hover{
     .container .sign-up.active{
         position: absolute;
         left: 10px;
-        top: 250px;
+        /* top: 250px; */
         width: 280px;
         height: 300px;
         display: flex;
