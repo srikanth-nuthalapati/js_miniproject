@@ -475,7 +475,7 @@ header ul li:hover{
 }
 
 
-@media screen  and (width < 360px) {
+@media screen  and (width < 400px) {
     .container{
         width: 350px;
         background-size: cover;
