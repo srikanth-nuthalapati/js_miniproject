@@ -475,7 +475,7 @@ header ul li:hover{
 }
 
 
-@media screen  and (max-width:350px) {
+@media screen  and (max-width:650px) {
     .container{
         width: 350px;
         height: 100vh;
