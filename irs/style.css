@@ -1,0 +1,702 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    overflow: hidden;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    background: url(steam-train-chugs-through-mountain-forest-scene-generative-ai_188544-8072.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+header{
+    height: 70px;
+}
+header ul{
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    align-items: last baseline;
+}
+header ul li{
+    cursor: pointer;
+    padding: 5px 8px;
+    background-color: #358fda;
+    color: #f5f1f1;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #08ffe7;
+}
+header ul li:hover{
+    background-color: #2f4f7f;
+}
+.container .book-ticket{
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+    display: none;
+}
+.container .book-ticket.active{
+    display: flex;
+    justify-content: space-around;
+}
+
+.container .book-ticket form{
+    border-radius: 20px;
+    width: 430px;
+    height: 60%;
+    padding: 20px;
+    box-shadow: 0 0 15px rgb(202, 190, 190);
+    backdrop-filter: blur(3px);
+    animation: smooth 0.6s 0s 1  ease-in;
+}
+.container .book-ticket form label{
+    font-size: 2em;
+    font-weight: 600;
+    color: black;
+    text-shadow: 0 0 5px white;
+}
+
+.container .book-ticket form input{
+    height: 30px;
+    padding: 8px;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 550;
+}
+.container .book-ticket form input#from, #date, #class{
+    margin-left: 20%;
+}
+.container .book-ticket form input#to{
+    margin-left: 31%;
+}
+.container .book-ticket form input::placeholder{
+    text-transform: uppercase;
+}
+.container .book-ticket form select{
+    height: 30px;
+    padding: 5px;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    width: 150px;
+    height: 40px;
+    font-weight: bold;
+}
+
+.container .book-ticket form button{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: tomato;
+    color: white;
+    border: none;
+    margin-left: 35%;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+.container .book-ticket form button:hover{
+    transform: scale(1.1);
+}
+.container .book-ticket .booking-details{
+    width: 500px;
+    height: 400px;
+    padding: 10px;
+    box-shadow: 0 0 15px black;
+    backdrop-filter: blur(3px);
+    border-radius: 20px;
+    text-align: center;
+    animation: smooth 0.6s 0s 1  ease-in;
+    display: none;
+}
+
+.container .book-ticket .booking-details h1{
+    color: rgb(255, 111, 111);
+    text-decoration: solid underline;
+    text-shadow: 0 0 5px;
+}
+.container .book-ticket .booking-details span{
+    text-align: center;
+    font-weight: bold;
+    background-color: rgba(4, 4, 7,0.7);
+    color: rgb(23, 143, 173);
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.container .book-ticket .booking-details .group-1{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-weight: 600;
+}
+.container .book-ticket .booking-details .group-1 p{
+    background-color: rgb(85, 176, 228);
+    border-radius: 10px;
+    padding: 5px;
+    color: black;
+}
+
+.container .book-ticket .booking-details .group-2{
+    display: flex;
+    justify-content: space-around;
+}
+.container .book-ticket .booking-details .group-2 h2{
+    color: goldenrod;
+}
+
+.container .book-ticket .booking-details h3,.date{
+    color: aquamarine;
+    background-color: rgba(43, 9, 9, 0.6);
+    padding: 5px;
+    border-radius: 3px;
+}
+.container .book-ticket .booking-details .greet{
+    background-color: rgb(111, 194, 63);
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    color: blue;
+}
+
+.container .pnr-check{
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+    display: none;
+}
+.container .pnr-check.active{
+    display: flex;
+    justify-content: space-around;
+}
+
+.container .pnr-check form{
+    border-radius: 20px;
+    width: 430px;
+    height: 40%;
+    padding: 20px;
+    box-shadow: 0 0 15px rgb(202, 190, 190);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    animation: smooth 0.6s 0s 1  ease-in;
+}
+.container .pnr-check form label{
+    font-size: 2em;
+    font-weight: 600;
+    color: black;
+    text-shadow: 0 0 5px white;
+}
+.container .pnr-check form input{
+    height: 30px;
+    padding: 8px;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 550;
+}
+
+.container .pnr-check form button{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: tomato;
+    color: white;
+    border: none;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+.container .pnr-check form button:hover{
+    transform: scale(1.1);
+}
+
+.container .pnr-check .pnr-status{
+    width: 400px;
+    height: 350px;
+    box-shadow: 0 0 15px rgb(202, 190, 190);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    text-align: center;
+    animation: smooth 0.6s 0s 1  ease-in;
+    display: none;
+}
+.container .pnr-check .pnr-status h1{
+    color: rgb(255, 111, 111);
+    text-decoration: solid underline;
+    text-shadow: 0 0 5px;
+}
+.container .pnr-check .pnr-status span{
+    text-align: center;
+    font-weight: bold;
+    background-color: rgba(4, 4, 7,0.7);
+    color: rgb(23, 143, 173);
+    padding: 7px;
+    border-radius: 5px;
+}
+.container .pnr-check .pnr-status .group-1{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-weight: 600;
+}
+.container .pnr-check .pnr-status .group-1 p{
+    background-color: rgb(85, 176, 228);
+    border-radius: 10px;
+    padding: 5px;
+}
+.container .pnr-check .pnr-status .group-2{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    text-shadow: 0 0 5px;
+}
+.container .pnr-check .pnr-status .group-3{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+.container .login-page.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.container .login-page{
+    position: relative;
+    left: 35%;
+    top: 10%;
+    width: 350px;
+    height: 350px;
+    box-shadow: 0 0 15px rgb(202, 190, 190);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    animation: smooth 0.6s 0s 1  ease-in;
+    display: none;
+}
+.container .login-page .grp-1{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.container .login-page .grp-2{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.container .login-page label{
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: 0 0 10px white;
+}
+.container .login-page input{
+    padding: 10px 5px;
+    outline: none;
+    border-radius: 15px;
+    border: none;
+}
+.container .login-page input::placeholder{
+    text-transform: uppercase;
+    text-align: center;
+}
+.container .login-page button{
+    padding: 10px 20px;
+    background-color: tomato;
+    border: 1px solid black;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+.container .login-page button:hover{
+    transform: scale(1.1);
+}
+.container .login-page p{
+    font-size: 1.2em;
+    font-weight: 700;
+    color: blue;
+    text-decoration: underline;
+    font-style: italic;
+}
+.container .login-page a{
+    font-size: 20px;
+    background-color: rgb(111, 194, 63);
+    padding: 5px 8px;
+    border-radius: 10px;
+}
+.container .login-page a:hover{
+    transform: scale(1.1);
+}
+.container .sign-up.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.container .sign-up{
+    position: relative;
+    left: 35%;
+    top: 10%;
+    width: 350px;
+    height: 400px;
+    box-shadow: 0 0 15px rgb(202, 190, 190);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    animation: smooth 0.6s 0s 1  ease-in;
+    display: none;
+}
+.container .sign-up h2{
+    margin: 0;
+}
+.container .sign-up .grp-1, .grp-2, .grp-3{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.container .sign-up label{
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: 0 0 10px white;
+}
+.container .sign-up input{
+    padding: 10px 5px;
+    outline: none;
+    border-radius: 15px;
+    border: none;
+}
+.container .sign-up input::placeholder{
+    text-transform: uppercase;
+    text-align: center;
+}
+.container .sign-up button{
+    padding: 10px 20px;
+    background-color: rgb(214, 69, 44);
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+.container .sign-up button:hover{
+    transform: scale(1.1);
+}
+.container .sign-up p{
+    font-size: 1.2em;
+    font-weight: 700;
+    color: blue;
+    text-decoration: underline;
+    font-style: italic;
+    margin: 0;
+}
+.container .sign-up a{
+    font-size: 20px;
+    background-color: rgb(111, 194, 63);
+    padding: 5px 8px;
+    border-radius: 10px;
+}
+.container .sign-up a:hover{
+    transform: scale(1.1);
+}
+.container .search-train.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    animation: smooth 0.5s 0s 1  ease-in;
+}
+.container .search-train{
+    width: 380px;
+    height: 420px;
+    position: relative;
+    left: 35%;
+    top: 10%;
+    padding: 10px;
+    box-shadow: 0 0 15px rgb(202, 190, 190);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    display: none;
+}
+.container .search-train label{
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: 0 0 10px white;
+}
+.container .search-train input{
+    padding: 10px 5px;
+    outline: none;
+    border-radius: 15px;
+    border: none;
+    text-transform: uppercase;
+}
+.container .search-train button{
+    padding: 10px 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: darkkhaki;
+    cursor: pointer;
+}
+.container .search-train button:hover{
+    transform: scale(1.1);
+    border: 1px solid darkkhaki;
+    font-weight: bold;
+}
+
+.container .search-train #train-search-result{
+    text-align: center;
+}
+.container .search-train #train-search-result p{
+    color: cyan;
+    font-weight: 700;
+}
+
+@keyframes smooth {
+    0% {
+        transform: scale(2.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+
+@media screen  and (width < 360px) {
+    .container{
+        width: 350px;
+        background-size: cover;
+        background-position: center;
+    }
+    .container header{
+        display: none;
+    }
+    .container .menu{
+        position: absolute;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        background-color: #08ffe7;
+        display: block !important;
+        overflow-y: hidden !important;
+    }
+    .container .menu.active{
+        width: 200px;
+        height: 260px;
+        background-color: #08ffe7;
+        display: block !important;
+        animation: comes 0.5s ease-in 0s 1;
+        border-radius: 5px;
+    }
+    .container .menu i{
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+        padding: 10px;
+    }
+    .container .menu .menu-container{
+        list-style-type: none;
+        display: none;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 50px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .container .menu .menu-container li{
+        font-size: 1.2em;
+        width: 100%;
+        text-align: center;
+    }
+    .container .menu .menu-container li:hover{
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        background-color: rgb(83, 65, 65);
+    }
+    .container .book-ticket.active{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .container .book-ticket form br{
+        display: none;
+    }
+    .container .book-ticket form{
+        width: 250px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        bottom: 25px;
+        animation: media_ 1s ease-in-out 0s 1 !important;
+    }
+    .container .book-ticket form.media, label{
+        display: none;
+    }
+    .container .book-ticket form input{
+        margin: 0 !important;
+    }
+    .container .book-ticket form select,button{
+        margin: 0 !important;
+    }
+    .container .book-ticket .booking-details{
+        width: 250px;
+        height: 380px;
+        position: relative;
+        top: 60px;
+        animation: media_ 1s ease-in-out 0s 1 !important;
+    }
+    .container .book-ticket .booking-details h1{
+        font-size: 25px;
+        margin-top: 0;
+    }
+    .container .book-ticket .booking-details .group-1{
+        display: flex;
+        flex-direction: column;
+        height: 80px;
+    }
+    .container .book-ticket .booking-details .group-1 p{
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+    .container .book-ticket .booking-details .group-2 h2{
+        font-size: 15px;
+    }
+    .container .book-ticket .booking-details .group-3{
+        flex-direction: column;
+    }
+    .container .book-ticket .booking-details .group-3 h3{
+        margin: 0;
+        font-size: 15px;
+    }
+    .container .pnr-check form{
+        width: 250px;
+        height: 300px;
+        position: absolute;
+        bottom: 90px;
+        animation: media_ 1s ease-in-out 0s 1 !important;
+    }
+    .container .pnr-check form.media{
+        display: none;
+    }
+    .container .pnr-check .pnr-status{
+        width: 250px;
+        height: 350px;
+        position: absolute;
+        bottom: 40px;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        animation: media_ 1s ease-in-out 0s 1 !important;
+    }
+    .container .pnr-check .pnr-status h1{
+        font-size: 20px;
+        margin-top: 0;
+    }
+    .container .pnr-check .pnr-status .group-1{
+        display: flex;
+        flex-direction: column;
+        row-gap: 3px;
+    }
+    .container .pnr-check .pnr-status .group-1 p{
+        margin: 0;
+        font-size: 13px;
+    }
+    .container .pnr-check .pnr-status .group-2 h2{
+        font-size: 20px;
+       margin: 0 10px;
+    }
+    .container .pnr-check .pnr-status .group-3{
+        font-size: 13px;
+        column-gap: 5px;
+    }
+
+    .container .search-train{
+        position: absolute;
+        left: 15px;
+        top: 300px;
+        width: 280px;
+        height: 300px;
+        row-gap: 5px;
+        animation: media_ 1s ease-in-out 0s 1 !important;
+    }
+    .container .search-train h2{
+        margin: 0;
+        font-size: 15px;
+    }
+    .container .search-train #train-search-result{
+        font-size: 14px;
+    }
+    .container .login-page.active{
+        position: absolute;
+        left: 10px;
+        top: 250px;
+        width: 280px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        animation: media_ 1s ease-in-out 0s 1 !important;
+    }
+    .container .login-page h2{
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+    .container .sign-up.active{
+        position: relative;
+    }
+
+    .container .sign-up.active{
+        position: absolute;
+        left: 10px;
+        top: 250px;
+        width: 280px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        animation: media_ 1s ease-in-out 0s 1 !important;
+    }
+}
+
+@keyframes comes {
+    0% {
+        position: absolute;
+        right: -150px;
+    }
+    100% {
+        position: absolute;
+        right: 0;
+    }
+}
+
+@keyframes media_ {
+    0% {
+        transform: translateX(-500px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

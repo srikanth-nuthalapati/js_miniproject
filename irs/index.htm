@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="menu" style="display: none;">
+            <i class='bx bx-menu' id="menu-btn"></i>
+            <div class="menu-container" style="display: none;">
+                <li id="media-book">book ticket</li>
+                <li id="media-pnr">PNR status</li>
+                <li id="media-search">Search Train</li>
+                <li id="media-login">Login</li>
+                <li id="media-signup">Sign up</li>
+            </div>
+        </div>
+          <header>
+            <ul>
+                <li id="ticket-btn">book ticket</li>
+                <li id="pnr-btn">PNR status</li>
+                <li id="search-train">Search Train</li>
+                <li id="Login">Login</li>
+                <li id="sign-up">Sign up</li>
+            </ul>
+          </header>
+
+        <div class="book-ticket">
+            <form>
+                <label for="from">From:</label>
+                <input type="text" id="from" name="from" placeholder="Boarding station" required><br><br>
+               
+                <label for="to">To:</label>
+                <input type="text" id="to" name="to" placeholder="destination station" required><br><br>
+             
+                <label for="date">Date: </label>
+                <input type="date" name="date" id="date" required><br><br>
+               
+                <label for="class">Class:</label>
+                <select name="Class" id="class" required>
+                    <option name="Class" value="sleeper">Sleeper</option>
+                    <option name="Class" value="3A">3rd Ac</option>
+                    <option name="Class" value="2A">2nd Ac</option>
+                    <option name="Class" value="1A">1st Ac</option>
+                </select><br><br>
+                
+                <button>Book Ticket</button>
+            </form>
+
+            <div class="booking-details">
+                <h1>Ticket details</h1>
+                <span id="Train Name"></span>
+                <div class="group-1">
+                <p id="booked-train-no">Train Number:</p>
+                <p id="booked-pnr-no">PNR Number:</p>
+                </div>
+                <div class="group-2">
+                <h2 id="booked-train-src">from</h2>
+                <h2 id="booked-train-des">to</h2>
+                </div>
+                <div class="group-3" style="display: flex; justify-content: space-around;">
+                <h3 id="berth"></h3>
+                <h3 id="booked-class">Class:</h3>
+                <h3 class="date" id="booked-date">Date:</h3>
+                </div>
+                <p class="greet">Happy Journey 😍</p>
+            </div>
+        </div>
+
+        <div class="pnr-check">
+            <form>
+                <label for="pnr">PNR Number:</label>
+                <input type="number" id="pnr" name="pnr-number" placeholder="enter pnr number" minlength="5" min="0" required>
+                <button>submit</button>
+            </form>
+            
+            <div class="pnr-status" style="display: none !important;">
+                <h1>PNR STATUS</h1>
+                <span id="pnr-train-name">hbhvghv</span>
+                <div class="group-1">
+                    <p id="pnr-train-no">Train Number : </p>
+                    <p id="pnr-display">PNR : </p>
+                </div>
+
+                <div class="group-2">
+                    <h2 id="pnr-from"> </h2>
+                    <h2 id="pnr-to"> </h2>
+                </div>
+
+                <div class="group-3">
+                    <h3 id="pnr-seat"> </h3>
+                    <h3 id="pnr-class"> </h3>
+                    <h3 id="pnr-date"> </h3>
+                </div>
+                <span id="pnr-train-time"></span>
+            </div>
+        </div>
+        
+        <div class="search-train">
+            <h2 style="margin: 0;">Search Train</h2>
+            <label for="train-no">Train No:</label>
+            <input type="number" id="train-no" name="train-no" placeholder="Train Number" required>
+            <button>Search</button>
+            <div id="train-search-result"></div>
+        </div>
+
+        <div class="login-page">
+            <h2>Login</h2>
+            <div class="grp-1">
+            <label for="phone">Phone:</label>
+            <input type="number" name="phone" id="Phone" min="0" placeholder="mobile number" required><br>
+            </div>
+
+            <div class="grp-2">
+            <label for="Password">Password:</label>
+            <input type="password" name="password" id="Password" placeholder="password" required><br>
+            </div>
+
+            <button>sign in</button>
+            <p>Don't Have a Account</p>
+            <a href="#sign-up">Sign up</a>
+        </div>
+
+        <div class="sign-up">
+            <h2>Sign up</h2>
+            <div class="grp-1">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="name" required>
+            </div>
+            <div class="grp-2">
+                <label for="Phone">Phone:</label>
+                <input type="number" name="phone" id="phone" min="0" placeholder="mobile number" required>
+            </div>
+            <div class="grp-3">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="password" required>
+            </div>
+
+            <button>sign up</button>
+            <p>Already Have account</p>
+            <a href="#Login">Login</a>
+        </div>
+    </div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
