@@ -277,7 +277,6 @@ let validName = /[a-zA-Z]+/;
 let log_in = false;
 let sign_up = false
 
-//bookticket page activation button click event
 
 
 function storeTicketDetail(newT){
@@ -540,13 +539,16 @@ menubtn.addEventListener("click",()=>{
 
 let mediaBookPage = document.querySelector(".container .menu #media-book");
 
+let bookedPage = document.querySelector(".container .book-ticket .booking-details");
+
 mediaBookPage.addEventListener("click",()=>{
-    bookContainer.classList.toggle("active");
+    bookContainer.classList.add("active");
     pnrContainer.classList.remove("active");
     loginPage.classList.remove("active");
     registerPage.classList.remove("active");
     TrainSearchPage.classList.remove("active");
     bookingForm.classList.remove("media");
+    bookedPage.style.display = "none";
 });
 
 let bookingForm = document.querySelector(".container .book-ticket form");
@@ -587,6 +589,7 @@ bookTicket.addEventListener("click",()=>{
     loginPage.classList.remove("active");
     registerPage.classList.remove("active");
     TrainSearchPage.classList.remove("active");
+    bookedPage.style.display = "none";
 });
 
 let mediaSignUpPage = document.querySelector(".container .menu #media-signup");
