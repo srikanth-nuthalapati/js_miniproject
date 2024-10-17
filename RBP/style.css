@@ -299,6 +299,9 @@ header ul li:hover{
     display: flex;
     justify-content: space-around;
 }
+.container .login-page .grp-1 input{
+    margin-left: 30px;
+}
 .container .login-page label{
     font-size: 20px;
     font-weight: 700;
@@ -309,6 +312,9 @@ header ul li:hover{
     outline: none;
     border-radius: 15px;
     border: none;
+}
+.container .login-page input:active{
+    border: 2px solid green;
 }
 .container .login-page input::placeholder{
     text-transform: uppercase;
@@ -497,7 +503,7 @@ header ul li:hover{
         height: 50px;
         background-color: #08ffe7;
         display: block !important;
-        overflow-y: hidden !important;
+        overflow: hidden !important;
     }
     .container .menu.active{
         width: 200px;
