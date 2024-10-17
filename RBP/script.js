@@ -386,7 +386,7 @@ let pnrfound = false;
        break;
     }
    }
-   if(!pnrfound){
+   if(pnrfound==false || pnrEntered.value == " "){
     alert("PNR not found");
    }
 });
