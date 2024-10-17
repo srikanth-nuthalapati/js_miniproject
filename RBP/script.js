@@ -362,6 +362,7 @@ pnrStatus.addEventListener("click",()=>{
     loginPage.classList.remove("active");
     registerPage.classList.remove("active");
     TrainSearchPage.classList.remove("active");
+    currentPnrStatus.style.display = "none";
 });
 
 pnrbtn.addEventListener("click",(e)=>{
@@ -369,7 +370,8 @@ pnrbtn.addEventListener("click",(e)=>{
 let pnrfound = false;
     let b = JSON.parse(localStorage.getItem("tickets"));
 
-   for(let i=0;i<b.length;i++){
+    try{
+    for(let i=0;i<b.length;i++){
     if(b[i].pnr == pnrEntered.value){
         pnrTrainNo.innerHTML += b[i].train_no;
         pnrDisply.innerHTML += b[i].pnr;
@@ -386,9 +388,13 @@ let pnrfound = false;
        break;
     }
    }
-   if(pnrfound==false || pnrEntered.value == " "){
+}
+catch(err){
+}
+if(!pnrfound){
     alert("PNR not found");
-   }
+}
+   
 });
 
 
