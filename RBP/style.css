@@ -8,6 +8,102 @@ body{
     font-family: Poppins, sans-serif;
     overflow: hidden;
 }
+
+.loading-container {
+    width: 40%;
+    height: 60vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px;
+  }
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    border: 5px solid #ddd;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  .message {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .no-ticket-container {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 50%;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    box-shadow:  0 0 20px;
+  }
+
+  .no-ticket-container.down {
+    animation: down .5s linear 1;
+    top: 50%;
+  }
+
+  .no-ticket-container.reverse {
+    animation: up .3s linear 1 backwards;
+  }
+
+  @keyframes down {
+    0% {
+        top: -50%;
+    }
+    100% {
+        top: 50%;
+    }
+  }
+
+  @keyframes up {
+    0% {
+        top: 50%;
+    }
+    100% {
+        top: 0;
+    }
+  }
+
+  .no-ticket-container i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 2.5em;
+    cursor: pointer;
+  }
+
+  .no-ticket-msg {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+  }
+
 .container{
     width: 100%;
     height: 100vh;
@@ -48,6 +144,7 @@ header ul li:hover{
 .container .book-ticket.active{
     display: flex;
     justify-content: space-around;
+    transition: .6s linear 1;
 }
 
 .container .book-ticket form{
@@ -485,6 +582,31 @@ header ul li:hover{
     .body{
         overflow: hidden !important;
     }
+
+    .loading-container {
+        width: 70%;
+        height: 35%;
+    }
+    .no-ticket-container {
+        /* position: absolute;
+        top: -50%;
+        left: 50%;
+        transform: translate(-50%,-50%); */
+        width: 75%;
+        height: 35%;
+        /* backdrop-filter: blur(20px);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        box-shadow:  0 0 20px; */
+      }
+    .no-ticket-msg {
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+      }
     .container{
         width: 360px;
         height: 100vh;

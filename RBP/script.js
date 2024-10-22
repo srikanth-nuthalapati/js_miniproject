@@ -61,7 +61,188 @@ let currentYear = dateObj.getFullYear();
 let currentMonth = dateObj.getMonth() + 1;
 let currentDate = dateObj.getDate();
 
-
+let data = {
+    trains:[
+        {
+             Train_no :12711,
+             Train_name: "pinakini express",
+             source:"vijayawada",
+             destination:"chennai",
+             departure_time:"06:10 am",
+             arrival_time: "01:06 pm",
+             sehedule: "Runs Daily"
+        },
+        {
+             Train_no:12712,
+             Train_name:"pinakini express",
+             source:"chennai",
+             destination:"vijayawada",
+             departure_time:"02:5 pm",
+             arrival_time:"09:35 pm",
+             sehedule:"Runs Daily"
+        },
+        {
+            Train_no :12709,
+            Train_name :"simhapuri SF express",
+            source :"gudur",
+            destination :"secunderabad",
+            departure_time :"06:40 pm",
+            arrival_time :"05:10 am",
+            sehedule :"Runs Daily"
+        },
+        {
+            Train_no :12710,
+            Train_name :"simhapuri SF express",
+            source :"secunderabad",
+            destination :"gudur",
+            departure_time :"11:05 pm",
+            arrival_time :"09:40 am",
+            sehedule :"Runs Daily"
+        },
+        {
+            Train_no :20707,
+            Train_name :"visakhapatnam vande bharat express",
+            source :"secunderabad",
+            destination :"visakhapatnam",
+            departure_time :"5:05 am",
+            arrival_time :"01:50 pm",
+            sehedule :"S M T W F S"
+        },
+        {
+            Train_no :20708,
+            Train_name :"secunderabad vande bharat express",
+            source :"visakhapatnam",
+            destination :"secunderabad",
+            departure_time :"02:35 pm",
+            arrival_time :"11:20 pm",
+            sehedule :"S M T W F S"
+        },
+        {
+        
+            Train_no :12603,
+            Train_name :"hyderabad sf express",
+            source :"chennai",
+            destination :"hyderabad",
+            departure_time :"04:45 pm",
+            arrival_time :"05:50 am",
+            sehedule :"S M T W T F S"
+        },
+        {
+        
+            Train_no :12604,
+            Train_name:"chennai central sf express",
+            source :"hyderabad",
+            destination :"chennai",
+            departure_time :"04:45 pm",
+            arrival_time :"05:40 am",
+            sehedule :"S M T W T F S"
+        },
+        {
+        
+            Train_no :12759,
+            Train_name :"charminar express",
+            source :"chennai",
+            destination :"secunderabad",
+            departure_time :"06:05 pm",
+            arrival_time :"06:35 am",
+            sehedule :"S M T W T F S"
+        },
+        {
+        
+            Train_no :12760,
+            Train_name :"charminar express",
+            source :"secunderabad",
+            destination :"chennai",
+            departure_time :"06:25 pm",
+            arrival_time :"07:00 am",
+            sehedule :"S M T W T F S"
+        },
+        {
+        
+            Train_no :17480,
+            Train_name :"tirupati - puri express",
+            source :"tirupati",
+            destination :"puri",
+            departure_time :"10:40 am",
+            arrival_time :"02:50 pm",
+            sehedule :"M T W F S"
+        },
+        {
+        
+            Train_no :17479,
+            Train_name :"puri - tirupati express",
+            source :"puri",
+            destination :"tirupati",
+            departure_time :"06:30 pm",
+            arrival_time :"10:45 pm",
+            sehedule :"S M W T F"
+        },
+        {
+        
+            Train_no :12766,
+            Train_name :"tirupati sf express",
+            source :"amravati",
+            destination :"tirupati",
+            departure_time :"06:45 am",
+            arrival_time :"06:25 am",
+            sehedule :"M T"
+        },
+        {
+             Train_no :12765,
+             Train_name :"amravati sf express",
+             source :"tirupati",
+             destination :"amravati",
+             departure_time :"03:35 pm",
+             arrival_time :"03:10 pm",
+             sehedule :"T S"
+        },
+        {
+             Train_no :18048,
+             Train_name :"kacheguda vsg shm exp",
+             source :"goa",
+             destination :"kacheguda",
+             departure_time :"06:30 am",
+             arrival_time :"05:00 am",
+             sehedule :"S T T F"
+        },
+        {
+            Train_no :18189,
+            Train_name :"ernakulam jn. exp",
+            source :"tatanagar",
+            destination :"ernakulam",
+            departure_time :"05:15 am",
+            arrival_time :"01:55 am",
+            sehedule :"S M T W T F S"
+        },
+        {
+             Train_no :18190,
+             Train_name :"tatanagar exp",
+             source :"ernakulam",
+             destination :"tatanagar",
+             departure_time :"07:15 am",
+             arrival_time :"05:00 am",
+             sehedule :"S M T W T F S"
+        },
+        {
+            Train_no :17229,
+            Train_name :"sabari exp",
+            source :"thiruvananthapuram",
+            destination :"secunderabad",
+            departure_time :"06:15 am",
+            arrival_time :"12:30 pm",
+            sehedule :"S M T W T F S"
+        },
+        {
+             Train_no :17230,
+             Train_name :"sabari exp",
+             source :"secunderabad",
+             destination :"thiruvananthapuram",
+             departure_time :"12:20 pm",
+             arrival_time :"06:05 pm",
+             sehedule :"S M T W T F S"
+        }
+    ]
+}
    
 loginPage.classList.add("active");
 
@@ -75,9 +256,10 @@ mediaLoginPage.addEventListener("click",()=>{
     TrainSearchPage.classList.remove("active");
 });
 
-let validNumber = /[0-9]{10}/;
+let validNumber = /^[0-9]{10}$/;
+
 let validPassword = /[A-Za-z0-9]{4,}/;
-let validName = /[a-zA-Z]+/;
+let validName = /[a-zA-Z]{4,}/;
 
 let log_in = false;
 let sign_up = false
@@ -106,61 +288,81 @@ bookingbtn.addEventListener("click",(e)=>{
     let month = arr[1];
     let year = arr[0];
 
-    if(log_in){
-        if(date!=null && boardingStation.value!='' && destinationStation.value!=''){
-            if(date>=currentDate && month>=currentMonth && year>=currentYear){
-                    
-                    fetch("http://localhost:3000/trains")
-                    .then(response => response.json())
-                    .then(data => {
-                            const train = data.find(train => train.source === boardingStation.value.toLowerCase() && train.destination === destinationStation.value.toLowerCase());
-                            if(train){                   
-                                let PnrG = generatePNR(); 
-                                BookedTicketTrain.textContent = `Train Name : ${train.Train_name.toUpperCase()}`;
-                                BookedTrainNo.textContent = `TRAIN NO : ${train.Train_no}`;
-                                BookedTicketPnr.textContent = `PNR NO : ${PnrG}`;
-                                BookedTicketSrc.textContent = `From : ${train.source}`;
-                                BookedTicketDes.textContent = `To : ${train.destination}`;
-                                Berthdetails.textContent = `Seat : ${generatedTicketNo}/${generatedBerth}`;
-                                BookedTicketClass.textContent = `Class : ${SelectedClass.value}`;
-                                BookedTicketDate.textContent = `Date : ${SelectedDate.value}`;
-                                ticketContainer.style.display = "block";
-                                bookingForm.classList.add("media");
+if(log_in){
+    if(date!=null && boardingStation.value!='' && destinationStation.value!=''){
+         if(date>=currentDate && month>=currentMonth && year>=currentYear){
+                let TrainAvaiable = false;
+                data.trains.map((val)=>{
+                    if(val.source == boardingStation.value.toLowerCase() && val.destination == destinationStation.value.toLowerCase()){
+                        TrainAvaiable = true;
+                        document.querySelector('.loading-container').style.display = "flex";
+                        bookContainer.style.opacity = ".5";
+                        setTimeout(()=>{
+                            document.querySelector('.loading-container').style.display = "none";
+                            bookContainer.style.opacity = "1";
+                            bookingForm.classList.add("media");
+                            ticketContainer.style.display = "block";
+                        },3000)
+                        let PnrG = generatePNR(); 
+                        BookedTicketTrain.textContent = `Train Name : ${val.Train_name.toUpperCase()}`;
+                        BookedTrainNo.textContent = `TRAIN NO : ${val.Train_no}`;
+                        BookedTicketPnr.textContent = `PNR NO : ${PnrG}`;
+                        BookedTicketSrc.textContent = `From : ${val.source}`;
+                        BookedTicketDes.textContent = `To : ${val.destination}`;
+                        Berthdetails.textContent = `Seat : ${generatedTicketNo}/${generatedBerth}`;
+                        BookedTicketClass.textContent = `Class : ${SelectedClass.value}`;
+                        BookedTicketDate.textContent = `Date : ${SelectedDate.value}`;
 
-                                let obj = {
-                                    "train_no": train.Train_no,
-                                    "train_name": train.Train_name,
-                                    "class": SelectedClass.value,
-                                    "source": train.source,
-                                    "destination": train.destination,
-                                    "timings": train.departure_time + " : " + train.arrival_time,
-                                    "seatNo" : generatedTicketNo + "/" + generatedBerth,
-                                    "pnr": PnrG,
-                                    "date": date + "-" + month + "-" + year,
-                                }
-                                storeTicketDetail(obj);
-                            } else {
-                                alert("No Trains Available for this route");
-                            }
-                    })
-                    .catch(e => console.log(e))
-                                 
-            }
-            else{
-                alert("Date should not be in past");
-            }
-        }
-
+                        let obj = {
+                            "train_no": val.Train_no,
+                            "train_name": val.Train_name,
+                            "class": SelectedClass.value,
+                            "source": val.source,
+                            "destination": val.destination,
+                            "timings": val.departure_time + " : " + val.arrival_time,
+                            "seatNo" : generatedTicketNo + "/" + generatedBerth,
+                            "pnr": PnrG,
+                            "date": date + "-" + month + "-" + year,
+                        }
+                        storeTicketDetail(obj);
+                    } 
+                })
+                if(!TrainAvaiable){
+                    document.querySelector('.loading-container').style.display = "flex";
+                    bookContainer.style.opacity = ".5";
+                    setTimeout(()=>{
+                        document.querySelector('.loading-container').style.display = "none";
+                        document.querySelector('.no-ticket-container').classList.add('down');
+                        document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `NO TRAINS AVAILABLE FOR THIS ROUTE`;
+                    },3000)
+                    bookContainer.style.opacity = "1";
+                }                        
+         }
         else{
-          alert("Please enter all fields");
+            document.querySelector('.loading-container').style.display = "flex";
+                    setTimeout(()=>{
+                        document.querySelector('.loading-container').style.display = "none";
+                        document.querySelector('.no-ticket-container').classList.add('down');
+                        document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Date should not be in past`;
+                    },3000)
+        }
+        }
+        else{
+            document.querySelector('.no-ticket-container').classList.add('down');
+            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Please enter all fields`;
         }
     } 
-
     else{
-    alert("Please login first");  
-    }
-    
+        document.querySelector('.no-ticket-container').classList.add('down');
+        document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Please login first`;
+    } 
 });
+
+document.querySelector(".no-ticket-container i").addEventListener("click",()=>{
+    document.querySelector('.no-ticket-container').classList.add("reverse");
+    document.querySelector('.no-ticket-container').classList.remove("down");
+    
+})
 
 pnrStatus.addEventListener("click",()=>{
     pnrContainer.classList.add("active");
@@ -176,30 +378,39 @@ pnrbtn.addEventListener("click",(e)=>{
 let pnrfound = false;
     let b = JSON.parse(localStorage.getItem("tickets"));
 
-    try{
+try{
     for(let i=0;i<b.length;i++){
-    if(b[i].pnr == pnrEntered.value){
-        pnrTrainNo.innerHTML += b[i].train_no;
-        pnrDisply.innerHTML += b[i].pnr;
-        pnrTrainName.innerHTML = `Train - ${b[i].train_name}`;
-        pnrSource.innerHTML += b[i].source;
-        pnrDestination.innerHTML += b[i].destination;
-        pnrSeat.innerHTML += b[i].seatNo;
-        pnrClass.innerHTML += b[i].class;
-        pnrDate.innerHTML += b[i].date;
-        pnrTtainTime.innerHTML = `Time : ${(b[i].timings).split(":").slice(0,2).join(":")}`;
+        if(b[i].pnr == pnrEntered.value){
+            document.querySelector('.loading-container').style.display = "flex";
+            setTimeout(()=>{
+                document.querySelector('.loading-container').style.display = "none";
+                currentPnrStatus.style.display = "block";
+            },3000)
+            pnrTrainNo.innerHTML = `TrainNo: ${b[i].train_no}`;
+            pnrDisply.innerHTML = `PNR: ${b[i].pnr}`;
+            pnrTrainName.innerHTML = `Train - ${b[i].train_name}`;
+            pnrSource.innerHTML = b[i].source;
+            pnrDestination.innerHTML = b[i].destination;
+            pnrSeat.innerHTML = b[i].seatNo;
+            pnrClass.innerHTML = b[i].class;
+            pnrDate.innerHTML = b[i].date;
+            pnrTtainTime.innerHTML = `Time : ${(b[i].timings).split(":").slice(0,2).join(":")}`;
 
-        pnrfound = true;
-       currentPnrStatus.style.display = "block";
-       break;
+            pnrfound = true;
+            break;
+        }
     }
-   }
 }
 catch(err){
 }
-if(!pnrfound){
-    alert("PNR not found");
-}
+    if(!pnrfound){
+        document.querySelector('.loading-container').style.display = "flex";
+                setTimeout(()=>{
+                    document.querySelector('.loading-container').style.display = "none";
+                    document.querySelector('.no-ticket-container').classList.add('down');
+                    document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid PNR `;
+                },3000)
+    }
    
 });
 
@@ -216,24 +427,38 @@ searchTrain.addEventListener("click",()=>{
 TrainSearchBtn.addEventListener("click",()=>{
 
     if(trainNo.value==''){
-        alert("Please Enter Train Number");
+        document.querySelector('.loading-container').style.display = "flex";
+        setTimeout(()=>{
+            document.querySelector('.loading-container').style.display = "none";
+            document.querySelector('.no-ticket-container').classList.add('down');
+            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Pls Enter Train Number`;
+        },3000)
         return;
     }
 
    let trainFound = false;
-   for(let i=0;i<data.length;i++){
-    if(data[i].Train_no == trainNo.value){
-        searchTrainResult.innerHTML = `
-        <p>${trainNo.value} - ${data[i].Train_name}</p>
-        <p>${data[i].source} -  ${data[i].destination} </p>
-        <p>Arrival:${data[i].arrival_time} -  Departure:${data[i].departure_time} </p> 
-        <p> Schedule - ${data[i].sehedule} </p>`;
-        trainFound = true;
-        break;
-    }
-   }
-   if(trainFound==false){
-    alert("No Train is found");
+    data.trains.map((val)=>{
+        if(val.Train_no == trainNo.value){
+            document.querySelector('.loading-container').style.display = "flex";
+            setTimeout(()=>{
+                document.querySelector('.loading-container').style.display = "none";
+                searchTrainResult.innerHTML = `
+                <p>${trainNo.value} - ${val.Train_name}</p>
+                <p>${val.source} -  ${val.destination} </p>
+                <p>Arrival:${val.arrival_time} -  Departure:${val.departure_time} </p> 
+                <p> Schedule - ${val.sehedule} </p>`;
+            },3000)
+            trainFound = true;
+        }
+    });
+
+   if(!trainFound){
+    document.querySelector('.loading-container').style.display = "flex";
+    setTimeout(()=>{
+        document.querySelector('.loading-container').style.display = "none";
+        document.querySelector('.no-ticket-container').classList.add('down');
+        document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Train is currently not available`;
+    },3000)
    }
 
 });
@@ -256,21 +481,36 @@ logInSuccessful.addEventListener("click",(Event)=>{
     let a = JSON.parse(localStorage.getItem("user"));
 
     if(a==null){ 
-        alert("No User Found, pls signup");
+        document.querySelector('.loading-container').style.display = "flex";
+        setTimeout(()=>{
+            document.querySelector('.loading-container').style.display = "none";
+            document.querySelector('.no-ticket-container').classList.add('down');
+            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `No User Found. Pls Sign up`;
+        },3000)
     }
     else{
        for(let i=0;i<a.length;i++){
            if(a[i].number == LoginNumber.value && a[i].password == LoginPassword.value){
-                alert("Logged in Successfully😍");
-                bookContainer.classList.add("active");
-                loginPage.classList.remove("active");
+                document.querySelector('.loading-container').style.display = "flex";
+                setTimeout(()=>{
+                    document.querySelector('.loading-container').style.display = "none";
+                    document.querySelector('.no-ticket-container').classList.add('down');
+                    document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Login Successfull😍`;
+                    setTimeout(()=>{
+                    document.querySelector('.no-ticket-container').classList.remove('down');
+                    document.querySelector('.no-ticket-container').classList.add('reverse');
+                    bookContainer.classList.add("active");
+                    loginPage.classList.remove("active");
+                    },1000)
+                },3000)
                 log_in = true;
                 break;
             }
         }
 
         if(log_in == false){
-            alert("Invalid Credentials");
+            document.querySelector('.no-ticket-container').classList.add('down');
+            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid Credentials`;
         }
     } 
 });
@@ -302,22 +542,34 @@ signUpSuccessful.addEventListener("click",()=>{
                     "number":SignUpNumber.value,
                     "password":SignUpPassword.value
                 }
-                storeSignUp(users); 
-                alert("Account created Successfully 😍");
-                loginPage.classList.add("active"); //radiracting to login page
-                registerPage.classList.remove("active"); //removing signup page class
-                sign_up = true;  
+                storeSignUp(users);
+                document.querySelector('.loading-container').style.display = "flex";
+                setTimeout(()=>{
+                    document.querySelector('.loading-container').style.display = "none";
+                    document.querySelector('.no-ticket-container').classList.add('down');
+                    document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Account created Successfull😍`;
+                    setTimeout(()=>{
+                    document.querySelector('.no-ticket-container').classList.remove('down');
+                    document.querySelector('.no-ticket-container').classList.add('reverse');
+                    
+                    loginPage.classList.add("active");
+                    registerPage.classList.remove("active"); //removing signup page
+                    },1000)
+                },3000) 
             }
             else{
-                alert("Name should be atleast 3 characters long and contain only letters");
+                document.querySelector('.no-ticket-container').classList.add('down');
+                document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Name should be atleast 3 characters long`;
             } 
         }
         else{
-            alert("Password should be atleast 8 characters long and contain only letters and numbers");
+            document.querySelector('.no-ticket-container').classList.add('down');
+            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Password should be atleast 8 characters long and contain only letters and numbers`;
         }
     }
     else{
-        alert("Invalid Number, Number should be 10 digits");
+        document.querySelector('.no-ticket-container').classList.add('down');
+            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid Number, Number should be 10 digits`;
     }
     
 });
