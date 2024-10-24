@@ -481,7 +481,7 @@ signUpSuccessful.addEventListener("click",()=>{
                 setTimeout(()=>{
                     document.querySelector('.loading-container').style.display = "none";
                     document.querySelector('.no-ticket-container').classList.add('down');
-                    document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Account created Successfull😍`;
+                    document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Account created Successfully😍`;
                     setTimeout(()=>{
                     document.querySelector('.no-ticket-container').classList.remove('down');
                     document.querySelector('.no-ticket-container').classList.add('reverse');
@@ -493,17 +493,17 @@ signUpSuccessful.addEventListener("click",()=>{
             }
             else{
                 document.querySelector('.no-ticket-container').classList.add('down');
-                document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Name should be atleast 3 characters long`;
+                document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Name should be atleast 3 characters`;
             } 
         }
         else{
             document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Password should be atleast 8 characters long and contain only letters and numbers`;
+            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Password should be atleast 8 characters`;
         }
     }
     else{
         document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid Number, Number should be 10 digits`;
+            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid Number`;
     }
     
 });
