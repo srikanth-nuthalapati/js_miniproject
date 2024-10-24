@@ -156,6 +156,55 @@ header ul li:hover{
     backdrop-filter: blur(3px);
     animation: smooth 0.6s 0s 1  ease-in;
 }
+
+.container .book-ticket form #suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;    /* Initially hidden */
+    position: absolute;
+    width: 90%;
+    background-color: white;
+    z-index: 1000;
+}
+
+#suggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+.container .book-ticket form .suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;    /* Initially hidden */
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+}
+
+.suggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
 .container .book-ticket form label{
     font-size: 2em;
     font-weight: 600;
@@ -166,13 +215,15 @@ header ul li:hover{
 .container .book-ticket form input{
     height: 30px;
     padding: 8px;
-    outline: none;
+    outline-width: 1px;
+    outline-color: yellow;
     border-radius: 10px;
-    border: none;
+    border: 1px solid #ccc;
     font-size: 16px;
     text-transform: capitalize;
     font-weight: 550;
 }
+
 .container .book-ticket form input#from, #date, #class{
     margin-left: 20%;
 }
@@ -540,6 +591,31 @@ header ul li:hover{
     font-weight: 700;
     text-decoration: 0 0 10px white;
 }
+
+.container .search-train #trainSuggestions {
+    list-style: none;
+    padding: 0;
+    margin-top: -150px;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;    /* Initially hidden */
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+}
+
+#trainSuggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#trainSuggestions li:hover {
+    background-color: #f0f0f0;
+}
+
 .container .search-train input{
     padding: 10px 5px;
     outline: none;
@@ -663,7 +739,7 @@ header ul li:hover{
     .container .menu .menu-container li:hover{
         border-top: 1px solid;
         border-bottom: 1px solid;
-        background-color: rgb(83, 65, 65);
+        background-color: #6dcfc5;
     }
     .container .book-ticket.active{
         width: 100%;

@@ -61,188 +61,8 @@ let currentYear = dateObj.getFullYear();
 let currentMonth = dateObj.getMonth() + 1;
 let currentDate = dateObj.getDate();
 
-let data = {
-    trains:[
-        {
-             Train_no :12711,
-             Train_name: "pinakini express",
-             source:"vijayawada",
-             destination:"chennai",
-             departure_time:"06:10 am",
-             arrival_time: "01:06 pm",
-             sehedule: "Runs Daily"
-        },
-        {
-             Train_no:12712,
-             Train_name:"pinakini express",
-             source:"chennai",
-             destination:"vijayawada",
-             departure_time:"02:5 pm",
-             arrival_time:"09:35 pm",
-             sehedule:"Runs Daily"
-        },
-        {
-            Train_no :12709,
-            Train_name :"simhapuri SF express",
-            source :"gudur",
-            destination :"secunderabad",
-            departure_time :"06:40 pm",
-            arrival_time :"05:10 am",
-            sehedule :"Runs Daily"
-        },
-        {
-            Train_no :12710,
-            Train_name :"simhapuri SF express",
-            source :"secunderabad",
-            destination :"gudur",
-            departure_time :"11:05 pm",
-            arrival_time :"09:40 am",
-            sehedule :"Runs Daily"
-        },
-        {
-            Train_no :20707,
-            Train_name :"visakhapatnam vande bharat express",
-            source :"secunderabad",
-            destination :"visakhapatnam",
-            departure_time :"5:05 am",
-            arrival_time :"01:50 pm",
-            sehedule :"S M T W F S"
-        },
-        {
-            Train_no :20708,
-            Train_name :"secunderabad vande bharat express",
-            source :"visakhapatnam",
-            destination :"secunderabad",
-            departure_time :"02:35 pm",
-            arrival_time :"11:20 pm",
-            sehedule :"S M T W F S"
-        },
-        {
-        
-            Train_no :12603,
-            Train_name :"hyderabad sf express",
-            source :"chennai",
-            destination :"hyderabad",
-            departure_time :"04:45 pm",
-            arrival_time :"05:50 am",
-            sehedule :"S M T W T F S"
-        },
-        {
-        
-            Train_no :12604,
-            Train_name:"chennai central sf express",
-            source :"hyderabad",
-            destination :"chennai",
-            departure_time :"04:45 pm",
-            arrival_time :"05:40 am",
-            sehedule :"S M T W T F S"
-        },
-        {
-        
-            Train_no :12759,
-            Train_name :"charminar express",
-            source :"chennai",
-            destination :"secunderabad",
-            departure_time :"06:05 pm",
-            arrival_time :"06:35 am",
-            sehedule :"S M T W T F S"
-        },
-        {
-        
-            Train_no :12760,
-            Train_name :"charminar express",
-            source :"secunderabad",
-            destination :"chennai",
-            departure_time :"06:25 pm",
-            arrival_time :"07:00 am",
-            sehedule :"S M T W T F S"
-        },
-        {
-        
-            Train_no :17480,
-            Train_name :"tirupati - puri express",
-            source :"tirupati",
-            destination :"puri",
-            departure_time :"10:40 am",
-            arrival_time :"02:50 pm",
-            sehedule :"M T W F S"
-        },
-        {
-        
-            Train_no :17479,
-            Train_name :"puri - tirupati express",
-            source :"puri",
-            destination :"tirupati",
-            departure_time :"06:30 pm",
-            arrival_time :"10:45 pm",
-            sehedule :"S M W T F"
-        },
-        {
-        
-            Train_no :12766,
-            Train_name :"tirupati sf express",
-            source :"amravati",
-            destination :"tirupati",
-            departure_time :"06:45 am",
-            arrival_time :"06:25 am",
-            sehedule :"M T"
-        },
-        {
-             Train_no :12765,
-             Train_name :"amravati sf express",
-             source :"tirupati",
-             destination :"amravati",
-             departure_time :"03:35 pm",
-             arrival_time :"03:10 pm",
-             sehedule :"T S"
-        },
-        {
-             Train_no :18048,
-             Train_name :"kacheguda vsg shm exp",
-             source :"goa",
-             destination :"kacheguda",
-             departure_time :"06:30 am",
-             arrival_time :"05:00 am",
-             sehedule :"S T T F"
-        },
-        {
-            Train_no :18189,
-            Train_name :"ernakulam jn. exp",
-            source :"tatanagar",
-            destination :"ernakulam",
-            departure_time :"05:15 am",
-            arrival_time :"01:55 am",
-            sehedule :"S M T W T F S"
-        },
-        {
-             Train_no :18190,
-             Train_name :"tatanagar exp",
-             source :"ernakulam",
-             destination :"tatanagar",
-             departure_time :"07:15 am",
-             arrival_time :"05:00 am",
-             sehedule :"S M T W T F S"
-        },
-        {
-            Train_no :17229,
-            Train_name :"sabari exp",
-            source :"thiruvananthapuram",
-            destination :"secunderabad",
-            departure_time :"06:15 am",
-            arrival_time :"12:30 pm",
-            sehedule :"S M T W T F S"
-        },
-        {
-             Train_no :17230,
-             Train_name :"sabari exp",
-             source :"secunderabad",
-             destination :"thiruvananthapuram",
-             departure_time :"12:20 pm",
-             arrival_time :"06:05 pm",
-             sehedule :"S M T W T F S"
-        }
-    ]
-}
+let data = trains;
+
    
 loginPage.classList.add("active");
 
@@ -279,7 +99,122 @@ function generatePNR(){
 
     return pnr;
 }
-//book button click event
+
+let routes = [...suggestion];
+
+
+
+const suggestions =  document.querySelector("#suggestions");
+
+boardingStation.addEventListener("input", () => {
+    const query = boardingStation.value.trim().toUpperCase();
+    if(query) {
+        const filteredSuggestions = routes.filter(item => item.includes(query));
+        
+        displaySuggestionsUp(filteredSuggestions);  
+    }
+    else {
+        suggestions.innerHTML = "";
+        suggestions.style.display = "none";
+    }
+})
+
+function displaySuggestionsUp(items) {
+    suggestions.innerHTML = ""; // Clear previous suggestions
+    if (items.length === 0) {
+        suggestions.style.display = "none";
+        return;
+    }
+    items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        li.addEventListener("click", function () {
+            boardingStation.value = item; // Set input to selected item
+            suggestions.innerHTML = "";
+            suggestions.style.display = "none";
+        });
+        suggestions.appendChild(li);
+    });
+    suggestions.style.display = "block"; // Show the list
+}
+
+
+
+const suggestionsDes =  document.querySelector(".suggestions");
+
+destinationStation.addEventListener("input", () => {
+    const query = destinationStation.value.trim().toUpperCase();
+    if(query) {
+        const filteredSuggestions = routes.filter(item => item.includes(query));
+        
+        displaySuggestionsDown(filteredSuggestions);  
+    }
+    else {
+        suggestionsDes.innerHTML = "";
+        suggestionsDes.style.display = "none";
+    }
+})
+
+
+
+
+function displaySuggestionsDown(items) {
+    suggestionsDes.innerHTML = ""; // Clear previous suggestions
+    if (items.length === 0) {
+        suggestionsDes.style.display = "none";
+        return;
+    }
+    items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        li.addEventListener("click", function () {
+            destinationStation.value = item; // Set input to selected item
+            suggestionsDes.innerHTML = "";
+            suggestionsDes.style.display = "none";
+        });
+        suggestionsDes.appendChild(li);
+    });
+    suggestionsDes.style.display = "block"; // Show the list
+}
+
+let TrainAva = AvaTrain;
+
+
+const trainSuggestions = document.querySelector("#trainSuggestions");
+
+trainNo.addEventListener("input", ()=>{
+    const query = trainNo.value.trim();
+    if(query) {
+        const filteredSuggestions = TrainAva.filter(item => item.includes(query));
+        display(filteredSuggestions);
+    }
+    else {
+        trainSuggestions.innerHTML = "";
+        trainSuggestions.style.display = "none";
+    }
+});
+
+function display(item){
+    trainSuggestions.innerHTML = ""; // Clear previous suggestions
+    if (item.length === 0) {
+        trainSuggestions.style.display = "none";
+        return;
+    }
+    item.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = item;
+        li.addEventListener("click", ()=>{
+            newitem = item.split("-");   
+            trainNo.value = +newitem[0]; // Set input to selected item
+            trainSuggestions.innerHTML = "";
+            trainSuggestions.style.display = "none";
+        })
+        trainSuggestions.appendChild(li);
+    })
+    trainSuggestions.style.display = "block";
+}
+
+
 bookingbtn.addEventListener("click",(e)=>{
     e.preventDefault();
     
@@ -292,7 +227,7 @@ if(log_in){
     if(date!=null && boardingStation.value!='' && destinationStation.value!=''){
          if(date>=currentDate && month>=currentMonth && year>=currentYear){
                 let TrainAvaiable = false;
-                data.trains.map((val)=>{
+                data.map((val)=>{
                     if(val.source == boardingStation.value.toLowerCase() && val.destination == destinationStation.value.toLowerCase()){
                         TrainAvaiable = true;
                         document.querySelector('.loading-container').style.display = "flex";
@@ -425,7 +360,6 @@ searchTrain.addEventListener("click",()=>{
 
 
 TrainSearchBtn.addEventListener("click",()=>{
-
     if(trainNo.value==''){
         document.querySelector('.loading-container').style.display = "flex";
         setTimeout(()=>{
@@ -437,7 +371,7 @@ TrainSearchBtn.addEventListener("click",()=>{
     }
 
    let trainFound = false;
-    data.trains.map((val)=>{
+    data.map((val)=>{
         if(val.Train_no == trainNo.value){
             document.querySelector('.loading-container').style.display = "flex";
             setTimeout(()=>{

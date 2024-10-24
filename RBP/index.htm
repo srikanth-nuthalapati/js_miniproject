@@ -43,9 +43,11 @@
             <form>
                 <label for="from">From:</label>
                 <input type="text" id="from" name="from" placeholder="Boarding station" required><br><br>
+                <ul id="suggestions"></ul>
                
                 <label for="to">To:</label>
                 <input type="text" id="to" name="to" placeholder="destination station" required><br><br>
+                <ul class="suggestions"></ul>
              
                 <label for="date">Date: </label>
                 <input type="date" name="date" id="date" placeholder="dd-mm-yyyy" required><br><br>
@@ -114,6 +116,7 @@
             <h2 style="margin: 0;">Search Train</h2>
             <label for="train-no">Train No:</label>
             <input type="number" id="train-no" name="train-no" placeholder="Train Number" required>
+            <ul id="trainSuggestions"></ul>
             <button>Search</button>
             <div id="train-search-result"></div>
         </div>
@@ -156,7 +159,7 @@
         </div>
     </div>
 
-
+<script src="trains.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
