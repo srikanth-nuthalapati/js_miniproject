@@ -10,7 +10,7 @@ body{
 }
 
 .loading-container {
-    width: 40%;
+    width: 25%;
     height: 40vh;
     position: absolute;
     top: 50%;
@@ -106,6 +106,177 @@ body{
     text-align: center;
   }
 
+.login-signup-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-signup-container.done {
+    display: none;
+}
+
+.login-signup-container .signup-page.active{
+    width: 48%;
+    height: 90%;
+    background: white;
+    box-shadow: 0 0 3px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.login-signup-container .signup-page{
+    display: none;
+}
+
+.login-signup-container .signup-page .details {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.login-signup-container .signup-page .details .grp1,
+.login-signup-container .signup-page .details .grp2,
+.login-signup-container .signup-page .details .grp3 {
+    display: inline;
+    padding: 5px 0;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+.login-signup-container .signup-page .details input {
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+}
+
+.login-signup-container .signup-pagee .details i {
+    margin-right: 10px;
+}
+
+.login-signup-container .signup-page .details input::placeholder{
+    font-size: 18px;
+}
+
+.login-signup-container .signup-page .details button {
+    padding: 10px;
+    width: 80px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.login-signup-container .signup-page .details button:hover {
+    color: #358fda;
+    background-color: white;
+    border: 1px solid #358fda;
+    font-weight: 600;
+}
+
+.login-signup-container .signup-page figure {
+    width: 48%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+}
+
+.login-signup-container .signup-page figure img {
+    width: 80%;
+    height: 70%;
+}
+
+
+.login-signup-container .login-page{
+    width: 48%;
+    height: 90%;
+    background: white;
+    box-shadow: 0 0 3px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.login-signup-container .login-page.active {
+    display: none;
+}
+
+.login-signup-container .login-page figure {
+    width: 48%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+}
+
+.login-signup-container .login-page figure img {
+    width: 80%;
+    height: 70%;
+}
+
+.login-signup-container .login-page .details {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.login-signup-container .login-page .details .grp1,
+.login-signup-container .login-page .details .grp2 {
+    display: inline;
+    padding: 5px 0;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+.login-signup-container .login-page .details input {
+    border: none;
+    outline: none;
+}
+
+.login-signup-container .login-page .details i {
+    margin-right: 10px;
+}
+
+.login-signup-container .login-page .details input::placeholder{
+    font-size: 18px;
+}
+
+.login-signup-container .login-page .details button {
+    padding: 10px;
+    width: 80px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.login-signup-container .login-page .details button:hover {
+    color: #358fda;
+    background-color: white;
+    border: 1px solid #358fda;
+    font-weight: 600;
+}
+
 .container{
     width: 100%;
     height: 100vh;
@@ -113,6 +284,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    /* display: none; */
 }
 header{
     height: 70px;
@@ -420,173 +592,30 @@ header ul li:hover{
     justify-content: space-around;
     color: white;
 }
-.container .login-page.active{
+
+.train-container.active {
+    width: 100%;
+    height: 90vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content:center;
     align-items: center;
+    column-gap: 50px;
 }
-.container .login-page{
-    position: relative;
-    left: 35%;
-    top: 10%;
-    width: 350px;
-    height: 350px;
-    box-shadow: 0 0 15px rgb(202, 190, 190);
-    padding: 20px;
-    border-radius: 20px;
-    backdrop-filter: blur(3px);
-    animation: smooth 0.6s 0s 1  ease-in;
+.train-container {
     display: none;
 }
-.container .login-page .grp-1{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-.container .login-page .grp-2{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-.container .login-page .grp-1 input{
-    margin-left: 30px;
-}
-.container .login-page label{
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: 0 0 10px white;
-}
-.container .login-page input{
-    padding: 10px 5px;
-    outline: none;
-    border-radius: 15px;
-    border: none;
-}
-.container .login-page input:active{
-    border: 2px solid green;
-}
-.container .login-page input::placeholder{
-    text-transform: uppercase;
-    text-align: center;
-}
-.container .login-page button{
-    padding: 10px 20px;
-    background-color: tomato;
-    border: 1px solid black;
-    border-radius: 20px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-}
-.container .login-page button:hover{
-    transform: scale(1.1);
-}
-.container .login-page p{
-    font-size: 1.2em;
-    font-weight: 700;
-    color: blue;
-    text-decoration: underline;
-    font-style: italic;
-}
-.container .login-page a{
-    font-size: 20px;
-    background-color: rgb(111, 194, 63);
-    padding: 5px 8px;
-    border-radius: 10px;
-}
-.container .login-page a:hover{
-    transform: scale(1.1);
-}
-.container .sign-up.active{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-.container .sign-up{
-    position: relative;
-    left: 35%;
-    top: 10%;
-    width: 350px;
-    height: 400px;
+.container .search-train{
+    width: 380px;
+    height: 420px;
+    padding: 10px;
     box-shadow: 0 0 15px rgb(202, 190, 190);
-    padding: 20px;
+    backdrop-filter: blur(6px);
     border-radius: 20px;
-    backdrop-filter: blur(3px);
-    animation: smooth 0.6s 0s 1  ease-in;
-    display: none;
-}
-.container .sign-up h2{
-    margin: 0;
-}
-.container .sign-up .grp-1, .grp-2, .grp-3{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-.container .sign-up label{
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: 0 0 10px white;
-}
-.container .sign-up input{
-    padding: 10px 5px;
-    outline: none;
-    border-radius: 15px;
-    border: none;
-}
-.container .sign-up input::placeholder{
-    text-transform: uppercase;
-    text-align: center;
-}
-.container .sign-up button{
-    padding: 10px 20px;
-    background-color: rgb(214, 69, 44);
-    border-radius: 20px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-}
-.container .sign-up button:hover{
-    transform: scale(1.1);
-}
-.container .sign-up p{
-    font-size: 1.2em;
-    font-weight: 700;
-    color: blue;
-    text-decoration: underline;
-    font-style: italic;
-    margin: 0;
-}
-.container .sign-up a{
-    font-size: 20px;
-    background-color: rgb(111, 194, 63);
-    padding: 5px 8px;
-    border-radius: 10px;
-}
-.container .sign-up a:hover{
-    transform: scale(1.1);
-}
-.container .search-train.active{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     animation: smooth 0.5s 0s 1  ease-in;
-}
-.container .search-train{
-    width: 380px;
-    height: 420px;
-    position: relative;
-    left: 35%;
-    top: 10%;
-    padding: 10px;
-    box-shadow: 0 0 15px rgb(202, 190, 190);
-    backdrop-filter: blur(6px);
-    border-radius: 20px;
-    display: none;
 }
 .container .search-train label{
     font-size: 20px;
@@ -647,6 +676,208 @@ header ul li:hover{
     font-weight: 700;
 }
 
+.train-container .location-container {
+    display: none;
+    width: 300px;
+    height: 370px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+    transition: .5s ease-in;
+}
+
+.location-container #into {
+    font-size: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    cursor: pointer;
+   border-radius: 50%;
+}
+.location-container #into:hover {
+    background-color: rgba(136, 179, 219, 0.329);
+   transform: rotate(230deg);
+   transition: .3s ease-out;
+}
+
+.location-container .box {
+    width: 100%;
+    height: 90%;
+    border-left: 3px solid #358fda;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.location-container .box .grp1, .grp2, .grp3 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.location-container .box .round1, .round3 {
+    height: 20px;
+    width: 20px;
+    background: #358fda;
+    border-radius: 50%;
+    position: absolute;
+    left: -11px;
+}
+
+.location-container .box i{
+    font-size: 30px;
+    border-radius: 50%;
+    color: white;
+}
+
+.location-container .box .round2{
+    height: 40px;
+    width: 40px;
+    background: #358fda;
+    border-radius: 50%;
+    position: absolute;
+    left: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.station-container.active{
+    display: flex;
+}
+
+.station-container {
+    width: 100%;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.container .search-station{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    animation: smooth 0.5s 0s 1  ease-in;
+    width: 380px;
+    height: 420px;
+    padding: 10px;
+    box-shadow: 0 0 15px rgb(202, 190, 190);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+}
+
+.container .search-station label{
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: 0 0 10px white;
+}
+
+.container .search-station #stationSuggestions {
+    list-style: none;
+    padding: 0;
+    margin-top: -150px;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: none;    /* Initially hidden */
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+}
+
+#stationSuggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#stationSuggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+.container .search-station input{
+    padding: 10px 5px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    text-transform: uppercase;
+}
+.container .search-station button{
+    padding: 10px 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: darkkhaki;
+    cursor: pointer;
+}
+.container .search-station button:hover{
+    transform: scale(1.1);
+    border: 1px solid darkkhaki;
+    font-weight: bold;
+}
+
+.container .search-station #station-search-result{
+    text-align: center;
+}
+.container .search-station #station-search-result p{
+    color: cyan;
+    font-weight: 700;
+}
+
+.container .search-station #station-search-result a{
+    color: white;
+    text-decoration: underline;
+}
+
+.container .profile-container.active {
+    display: flex;
+}
+
+.container .profile-container {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .profile-container .profile-page {
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    box-shadow: 0 0 15px rgb(202, 190, 190);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .profile-container .profile-page button {
+    padding: 10px;
+    background-color: #358fda;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+}
+
+.container .profile-container .profile-page button:hover {
+    transform: scale(1.1);
+    font-weight: 600;
+    transition: .1s linear ;
+}
+
 @keyframes smooth {
     0% {
         transform: scale(2.5);
@@ -661,7 +892,48 @@ header ul li:hover{
     .body{
         overflow: hidden !important;
     }
-
+    .login-signup-container{
+        width: 350px;
+        height: 100vh;
+    }
+    .login-signup-container .login-page {
+        width: 100%;
+        height: 100vh;
+    }
+    .login-signup-container .login-page figure{
+       width: 40%;
+       height: 5%;
+       position: absolute;
+       bottom: 15px;
+    }
+    .login-signup-container .login-page figure img{
+        display: none;
+    }
+    .login-signup-container .login-page .details,
+    .login-signup-container .signup-page .details {
+        width: 100%;
+    }
+    .login-signup-container .login-page .details label,
+    .login-signup-container .signup-page .details label{
+        display: block;
+        font-size: 15px;
+    }
+    .login-signup-container .signup-page .details .grp4{
+       display: flex;
+    }
+    .login-signup-container .signup-page{
+       width: 100% !important;
+       height: 100% !important;
+    }
+    .login-signup-container .signup-page figure img{
+        display: none;
+    }
+    .login-signup-container .signup-page figure {
+        width: 40%;
+        height: 5%;
+        position: absolute;
+        bottom: 10px;
+    }
     .loading-container {
         width: 70%;
         height: 35%;
@@ -677,8 +949,9 @@ header ul li:hover{
         text-align: center;
       }
     .container{
+        display: none;
         width: 360px;
-        height: 100vh;
+        height: 100vh !important;
         background-size: cover;
         background-position: center;
         position: relative;
@@ -736,6 +1009,8 @@ header ul li:hover{
     }
     .container .book-ticket.active{
         width: 100%;
+        height: 90%;
+        box-sizing: border-box;
         display: flex;
     }
     .container .book-ticket form br{
@@ -772,17 +1047,24 @@ header ul li:hover{
     .container .book-ticket .booking-details h1{
         font-size: 25px;
         margin-top: 0;
+        color: black;
+        text-shadow: none;
+    }
+    .container .book-ticket .booking-details span {
+        background-color: transparent;
+        color: white;
     }
     .container .book-ticket .booking-details .group-1{
         display: flex;
         flex-direction: column;
+        align-items: center;
         height: 80px;
     }
     .container .book-ticket .booking-details .group-1 p{
         font-size: 12px;
+        text-align: center;
         margin: 0;
-        padding: 0;
-        display: inline-block;
+        padding: 5px;
     }
     .container .book-ticket .booking-details .group-2 h2{
         font-size: 15px;
@@ -793,20 +1075,23 @@ header ul li:hover{
     .container .book-ticket .booking-details .group-3 h3{
         margin: 0;
         font-size: 15px;
+        background-color: transparent;
+    }
+    .container .pnr-check.active{
+       height: 80%;
     }
     .container .pnr-check form{
-        width: 250px;
-        height: 300px;
+        width: 70%;
         animation: media_ 1s ease-in-out 0s 1 !important;
+    }
+    .container .pnr-check form.hide{
+        display: none;
     }
     .container .pnr-check form label{
         display: block;
         font-size: 25px;
     }
-    .container .pnr-check form.media{
-        display: none;
-    }
-    .container .pnr-check .pnr-status{
+    .container .pnr-check .pnr-status.active{
         width: 250px;
         height: 350px;
         display: flex !important;
@@ -815,9 +1100,14 @@ header ul li:hover{
         align-items: center;
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
+    .container .pnr-check .pnr-status{
+        display: none;
+    }
     .container .pnr-check .pnr-status h1{
         font-size: 20px;
         margin-top: 0;
+        color: black;
+        text-shadow: none;
     }
     .container .pnr-check .pnr-status .group-1{
         display: flex;
@@ -831,6 +1121,7 @@ header ul li:hover{
     .container .pnr-check .pnr-status .group-2 h2{
         font-size: 20px;
        margin: 0 10px;
+       text-shadow: none;
     }
     .container .pnr-check .pnr-status .group-3{
         font-size: 13px;
@@ -842,7 +1133,7 @@ header ul li:hover{
         left: 15px;
         /* top: 300px; */
         width: 280px;
-        height: 300px;
+        height: 350px;
         row-gap: 5px;
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
@@ -850,42 +1141,28 @@ header ul li:hover{
         margin: 0;
         font-size: 20px;
     }
-    .container .search-train #train-search-result{
-        font-size: 14px;
+    .container .search-train #train-search-result p{
+        font-size: 14px; 
+        color: white;
     }
-    .container .login-page.active{
-        position: absolute;
-        left: 10px;
-        /* top: 250px; */
-        width: 280px;
-        height: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
+    .container .train-container .location-container{
+        width: 70%;
+        height: 50%;
+    }
+    .container .train-container .location-container h3{
+        font-size: 15px;
+    }
+    .container .station-container .search-station {
         animation: media_ 1s ease-in-out 0s 1 !important;
+        width: 80%;
+        height: 60%;
     }
-    .container .login-page h2{
-        font-size: 20px;
-        margin-bottom: 0;
+    .container .profile-container{
+        display: none !important;
     }
-    .container .login-page input{
-        margin-left: 30px;
-    }
-    .container .sign-up.active{
-        position: relative;
-    }
-
-    .container .sign-up.active{
-        position: absolute;
-        left: 10px;
-        /* top: 250px; */
-        width: 280px;
-        height: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
+    .container .profile-container.active {
+        display: flex !important;
+        height: 80%;
         animation: media_ 1s ease-in-out 0s 1 !important;
     }
 }

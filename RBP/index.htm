@@ -18,6 +18,56 @@
         <div class="no-ticket-msg"></div>
     </div>
 
+    <div class="login-signup-container">
+        <div class="login-page">
+            <figure>
+                <img src="signin-image.jpg" alt="">
+                <a href="#" style="text-decoration: underline;">create account</a>
+            </figure>
+            <div class="details">
+                <h2 style="text-align: center;">Login</h2>
+                <div class="grp1">
+                    <i class='bx bxs-user'></i>
+                    <input type="number" id="login-number" placeholder="Number" name="number" min="0">
+                </div>
+                <div class="grp2">
+                    <i class='bx bxs-lock'></i>
+                    <input type="password" id="login-password" placeholder="password" name="pass">
+                </div>
+                <div class="grp3">
+                    <input onclick="show()" type="checkbox" name="showpass" id="showpass"> <label for="showpass">Show password</label>
+                </div>
+                <button>Login</button>
+            </div>
+        </div>
+
+        <div class="signup-page">
+            <div class="details">
+                <h3>Sign Up</h3>
+                <div class="grp1">
+                    <i class='bx bx-happy'></i>
+                    <input type="text" placeholder="Name" name="Name" id="Name">
+                </div>
+                <div class="grp2">
+                    <i class='bx bxs-user'></i>
+                    <input type="number" id="signup-number" placeholder="Number" name="number" min="0">
+                </div>
+                <div class="grp3">
+                    <i class='bx bxs-lock'></i>
+                    <input type="password" id="signup-pasword" placeholder="password" name="pass">
+                </div>
+                <div class="grp4">
+                    <input onclick="show()" type="checkbox" name="showpass" id="showpass"> <label for="showpass">Show password</label>
+                </div>
+                <button>Sign Up</button>
+            </div>
+            <figure>
+                <img src="signup-image.jpg" alt="signup-image">
+                <a href="#" style="text-decoration: underline;">Login</a>
+            </figure>
+        </div>
+    </div>
+
     <div class="container">
         <div class="menu" style="display: none;">
             <i class='bx bx-menu' id="menu-btn"></i>
@@ -25,19 +75,20 @@
                 <li id="media-book">book ticket</li>
                 <li id="media-pnr">PNR status</li>
                 <li id="media-search">Search Train</li>
-                <li id="media-login">Login</li>
-                <li id="media-signup">Sign up</li>
+                <li id="media-station">Search Station</li>
+                <li id="media-profile">Profile</li>
             </div>
         </div>
-          <header>
-            <ul>
-                <li id="ticket-btn">book ticket</li>
-                <li id="pnr-btn">PNR status</li>
-                <li id="search-train">Search Train</li>
-                <li id="Login">Login</li>
-                <li id="sign-up">Sign up</li>
-            </ul>
-          </header>
+
+        <header>
+        <ul>
+            <li id="ticket-btn">book ticket</li>
+            <li id="pnr-btn">PNR status</li>
+            <li id="search-train">Search Train</li>
+            <li id="Search-station">Search Station</li>
+            <li id="profile-btn">Profile</li>
+        </ul>
+        </header>
 
         <div class="book-ticket">
             <form>
@@ -86,11 +137,11 @@
         <div class="pnr-check">
             <form>
                 <label for="pnr">PNR Number:</label>
-                <input type="number" id="pnr" name="pnr-number" placeholder="enter pnr number" minlength="5" min="0" required>
+                <input type="number" id="pnr" placeholder="enter pnr number" minlength="5" min="0">
                 <button>submit</button>
             </form>
             
-            <div class="pnr-status" style="display: none !important;">
+            <div class="pnr-status">
                 <h1>PNR STATUS</h1>
                 <span id="pnr-train-name"></span>
                 <div class="group-1">
@@ -111,53 +162,57 @@
                 <span id="pnr-train-time"></span>
             </div>
         </div>
-        
-        <div class="search-train">
-            <h2 style="margin: 0;">Search Train</h2>
-            <label for="train-no">Train No:</label>
-            <input type="number" id="train-no" name="train-no" placeholder="Train Number" required>
-            <ul id="trainSuggestions"></ul>
+
+        <div class="train-container">
+            <div class="search-train">
+                <h2 style="margin: 0;">Search Train</h2>
+                <label for="train-no">Train No:</label>
+                <input type="number" id="train-no" name="train-no" placeholder="Train Number" required>
+                <ul id="trainSuggestions"></ul>
+                <button>Search</button>
+                <div id="train-search-result"></div>
+                <button id="live-btn">Live Location</button>
+            </div>
+            <div class="location-container">
+                <i class='bx bx-x' id="into"></i>
+                <div class="box">
+                    <div class="grp1">
+                        <h3 id="first"></h3>
+                        <div class="round1"></div>
+                    </div>
+                    <div class="grp2">
+                        <h3 id="middle"></h3>
+                        <div class="round2"><i class='bx bx-train'></i></div>
+                    </div>
+                    <div class="grp3">
+                        <h3 id="last"></h3>
+                        <div class="round3"></div>
+                    </div>
+                </div>
+                <div class="delay" style="text-align: center; margin-top: 20px;">--No delay--</div>
+            </div>
+        </div>
+
+     <div class="station-container">
+        <div class="search-station">
+            <h2 style="margin: 0;">Search Station</h2>
+            <label for="Station-name">Station Name/Code:</label>
+            <input type="text" id="Station-name" name="station-name" placeholder="Station Name/Code" required>
+            <ul id="stationSuggestions"></ul>
             <button>Search</button>
-            <div id="train-search-result"></div>
-        </div>
-
-        <div class="login-page">
-            <h2>Login</h2>
-            <div class="grp-1">
-            <label for="phone">Phone:</label>
-            <input type="number" name="phone" id="Phone" min="0" placeholder="mobile number" required><br>
-            </div>
-
-            <div class="grp-2">
-            <label for="Password">Password:</label>
-            <input type="password" name="password" id="Password" placeholder="password" required><br>
-            </div>
-
-            <button>sign in</button>
-            <p>Don't Have a Account</p>
-            <a href="#sign-up">Sign up</a>
-        </div>
-
-        <div class="sign-up">
-            <h2>Sign up</h2>
-            <div class="grp-1">
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" placeholder="name" required>
-            </div>
-            <div class="grp-2">
-                <label for="Phone">Phone:</label>
-                <input type="number" name="phone" id="phone" min="0" placeholder="mobile number" required>
-            </div>
-            <div class="grp-3">
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" placeholder="password" required>
-            </div>
-
-            <button>sign up</button>
-            <p>Already Have account</p>
-            <a href="#Login">Login</a>
+            <div id="station-search-result"></div>
         </div>
     </div>
+     
+    <div class="profile-container">
+        <div class="profile-page">
+            <h2 style="margin: 0;">Profile</h2>
+            <h4 id="pro-name" style="color: white;"></h4>
+            <h4 id="pro-number" style="color: white;"></h4>
+            <button>Log out</button>
+        </div>
+    </div>
+</div>
 
 <script src="trains.js"></script>
 <script src="script.js"></script>
