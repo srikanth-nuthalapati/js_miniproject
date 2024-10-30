@@ -112,6 +112,8 @@ loginBtn.addEventListener("click",()=>{
                     bookContainer.classList.add("active");
                     logSignContainer.classList.add("done");
                     },1000)
+                    LoginNumber.value = "";
+                    LoginPassword.value = "";
                 },3000)
                 log_in = true;
                 break;
@@ -153,7 +155,9 @@ signUpBtn.addEventListener("click",()=>{
                     },1000)
                     signUpPage.classList.remove("active");
                     loginPage.classList.remove("active");
-
+                    signUpName.value = '';
+                    SignUpNumber.value = '';
+                    SignUpPassword.value = '';
                 },3000) 
             }
             else{
@@ -399,6 +403,7 @@ document.querySelector(".no-ticket-container i").addEventListener("click",()=>{
     
 })
 
+//pnr status check event
 const currentPnrStatus = document.querySelector(".pnr-check .pnr-status");
 pnrStatus.addEventListener("click",()=>{
     pnrContainer.classList.add("active");
@@ -412,6 +417,7 @@ pnrStatus.addEventListener("click",()=>{
 const mediaPnr = document.querySelector(".container .menu-container #media-pnr");
 const pnrForm = document.querySelector(".container .pnr-check form");
 
+//mediaquery pnr status event
 mediaPnr.addEventListener("click",()=>{
     pnrContainer.classList.add("active");
     bookContainer.classList.remove("active");
@@ -462,6 +468,7 @@ catch(err){
    
 });
 
+// search train event
 let train_container = document.querySelector(".train-container");
 searchTrain.addEventListener("click",()=>{
     train_container.classList.add("active");
@@ -532,7 +539,7 @@ TrainSearchBtn.addEventListener("click",()=>{
 
 });
 
-
+//station searching..
 const StationSearchPage = document.querySelector(".container .station-container");
 const mediaStation = document.querySelector(".container .menu #media-station");
 mediaStation.addEventListener("click",()=>{
@@ -542,7 +549,8 @@ mediaStation.addEventListener("click",()=>{
     pnrContainer.classList.remove("active");
     profilePage.classList.remove("active");
 })
-//station searching..
+
+
 searchStation.addEventListener("click", ()=> {
     StationSearchPage.classList.add("active");
     train_container.classList.remove("active");

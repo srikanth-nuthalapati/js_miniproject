@@ -131,6 +131,11 @@ body{
 .login-signup-container .signup-page{
     display: none;
 }
+.login-signup-container .signup-page h4,
+.login-signup-container .login-page h4{
+    position: absolute;
+    top: 25px;
+}
 
 .login-signup-container .signup-page .details {
     width: 50%;
