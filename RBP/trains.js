@@ -190,7 +190,7 @@ const trains = [
              Train_no :17230,
              Train_name :"sabari exp",
              source :"secunderabad",
-            middle_station: "tirupati",
+             middle_station: "tirupati",
              destination :"thiruvananthapuram",
              departure_time :"12:20 pm",
              arrival_time :"06:05 pm",

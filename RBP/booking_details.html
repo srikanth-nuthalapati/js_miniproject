@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #booking-details {
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            width: 50%;
+            position: relative;
+            top: 20%;
+        }
+
+        #booking-details h2 {
+            font-size: 2rem;
+            color: yellow;
+            margin-bottom: 20px;
+        }
+
+        #booking-details p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        #booking-details button {
+            background-color: yellow;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #booking-details button:hover {
+            background-color: orange;
+        }
+
+        @media (max-width: 768px) {
+            #booking-details {
+                width: 90%;
+                top: 10%;
+            }
+
+            #booking-details h2 {
+                font-size: 1.5rem;
+            }
+
+            #booking-details p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Booking Details -->
+     <div id="booking-details">
+        <h2>Booking Confirmation</h2>
+        <p><strong>Train No:</strong> <span id="train-no"></span></p>
+        <p><strong>From:</strong> <span id="from-station"></span></p>
+        <p><strong>To:</strong> <span id="to-station"></span></p>
+        <p><strong>Date:</strong> <span id="travel-date"></span></p>
+        <p><strong>Quota:</strong> <span id="quota"></span></p>
+        <p><strong>Seat No:</strong> <span id="seat_no"></span></p>
+        <p><strong>PNR Number:</strong> <span id="pnr-number"></span></p>
+        <button onclick="goBack()">Return to Homepage</button>
+    </div>
+
+    <script>
+         function goBack() {
+            alert("Returning to Homepage...");
+            window.location.href = "index.html";
+        }
+
+        window.onload = function () {
+            let bookingDetails = JSON.parse(localStorage.getItem('tickets'));
+            if(bookingDetails.length > 0){
+                let last_booked = bookingDetails[bookingDetails.length -1];
+                document.getElementById("train-no").innerHTML = last_booked.train_no;
+                document.getElementById("from-station").innerHTML = last_booked.source;
+                document.getElementById("to-station").innerHTML = last_booked.destination;
+                document.getElementById("travel-date").innerHTML = last_booked.date;
+                document.getElementById("quota").innerHTML = last_booked.class;
+                document.getElementById("seat_no").innerHTML = last_booked.seatNo;
+                document.getElementById("pnr-number").innerHTML = last_booked.pnr;
+            }
+            else{
+                console.log("No booking details found");
+            }
+            
+        }
+    </script>
+</body>
+</html>

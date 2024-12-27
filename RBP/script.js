@@ -1,201 +1,192 @@
-const bookTicket = document.querySelector("header #ticket-btn");
-const pnrStatus = document.querySelector("header #pnr-btn");
-const searchTrain = document.querySelector("header #search-train");
-const searchStation = document.querySelector("header #Search-station");
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', event => {
+        event.preventDefault();
+        const targetId = event.target.getAttribute('data-target');
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById(targetId).classList.add('active');
+    });
+});
 
-const bookContainer = document.querySelector(".container .book-ticket");
-const pnrContainer = document.querySelector(".container .pnr-check");
-const TrainSearchPage = document.querySelector(".container .search-train");
+function storeSignUp(newobj){
+    let existing = JSON.parse(localStorage.getItem("user")) || [];
+    existing.push(newobj);
+    localStorage.setItem("user", JSON.stringify(existing));
+}
 
-const bookingbtn = document.querySelector(".book-ticket form button");
-const pnrbtn = document.querySelector(".pnr-check form button");
-const TrainSearchBtn = document.querySelector(".container .search-train button");
+const loginPhone = document.querySelector('#login form div #login-number');
+const loginPass = document.querySelector('#login form div #login-password');
+const loginBtn = document.querySelector('.container #login form button');
+let login = false;
 
-const ticketContainer = document.querySelector(".container .booking-details");
-let searchTrainResult = document.querySelector(".container .search-train #train-search-result");
-
-let boardingStation = document.querySelector(".container .book-ticket #from");
-let destinationStation = document.querySelector(".container .book-ticket #to");
-let SelectedDate = document.querySelector(".container .book-ticket #date");
-let SelectedClass = document.querySelector(".container .book-ticket #class");
-
-let BookedTrainNo = document.querySelector(".container .booking-details .group-1 #booked-train-no");
-let BookedTicketPnr = document.querySelector(".container .booking-details .group-1 #booked-pnr-no");
-let BookedTicketTrain = document.querySelector(".container .booking-details span");
-let BookedTicketSrc = document.querySelector(".container .booking-details .group-2 #booked-train-src");
-let BookedTicketDes = document.querySelector(".container .booking-details .group-2 #booked-train-des");
-let BookedTicketClass = document.querySelector(".container .booking-details .group-3 #booked-class");
-let BookedTicketDate = document.querySelector(".container .booking-details .group-3 #booked-date");
-let Berthdetails = document.querySelector(".container .booking-details .group-3 #berth");
-
-let pnrEntered = document.querySelector(".container .pnr-check form #pnr");
-let pnrTrainName =  document.querySelector(".container .pnr-check .pnr-status #pnr-train-name");
-let pnrDisply =  document.querySelector(".container .pnr-check .pnr-status .group-1 #pnr-display");
-let pnrTrainNo =  document.querySelector(".container .pnr-check .pnr-status .group-1 #pnr-train-no");
-let pnrSource =  document.querySelector(".container .pnr-check .pnr-status .group-2 #pnr-from");
-let pnrDestination =  document.querySelector(".container .pnr-check .pnr-status .group-2 #pnr-to");
-let pnrSeat =  document.querySelector(".container .pnr-check .pnr-status .group-3 #pnr-seat");
-let pnrClass =  document.querySelector(".container .pnr-check .pnr-status .group-3 #pnr-class");
-let pnrDate =  document.querySelector(".container .pnr-check .pnr-status .group-3 #pnr-date");
-let pnrTtainTime = document.querySelector(".container .pnr-check .pnr-status #pnr-train-time");
-
-let trainNo = document.querySelector(".container .search-train input");
-
-let dateObj = new Date();
-let currentYear = dateObj.getFullYear();
-let currentMonth = dateObj.getMonth() + 1;
-let currentDate = dateObj.getDate();
-
-let data = trains;
+//login event handle
+loginBtn.addEventListener('click',(e) => {
+    e.preventDefault();
+    document.getElementById("loading-screen").style.display = "flex";
+    document.querySelector("#loading-screen p").textContent = 'validation, please wait...';
+    setTimeout(() => {
+        document.getElementById("loading-screen").style.display = "none";
+        let user = JSON.parse(localStorage.getItem("user"));
+        if(user != null){
+            let found = user.find(auth => auth.number === loginPhone.value && auth.password === loginPass.value);
+            if(found){
+                alert("Login Successfull");
+                document.getElementById('login').classList.remove('active');
+                document.getElementById('book-ticket').classList.add('active');
+                login = true;
+            }
+            else{
+                alert("Invalid Credentials");
+            }
+        }
+        else{
+            alert("No User Found");
+        }
+    },3000);
+});
 
 let validNumber = /^[0-9]{10}$/;
-
 let validPassword = /[A-Za-z0-9]{4,}/;
 let validName = /[a-zA-Z]{4,}/;
 
-let log_in = false;
-let sign_up = false;
+//signup event handle
+const signUpName = document.querySelector('#signup form div #signup-name');
+const signUpPhone = document.querySelector('#signup form div #signup-number');
+const signUpPass = document.querySelector('#signup form div #signup-password');
+const signUpBtn = document.querySelector('#signup form button');
 
-const container = document.querySelector(".container");
-const logSignContainer = document.querySelector(".login-signup-container");
-const loginPage = document.querySelector(".login-signup-container .login-page");
-const signUpPage = document.querySelector(".login-signup-container .signup-page");
+signUpBtn.addEventListener("click",(e) => {
+    e.preventDefault();
+    document.getElementById("loading-screen").style.display = "flex";
+    document.querySelector("#loading-screen p").textContent = 'Creating Account, please wait...';
+    setTimeout(() => {
+        document.getElementById("loading-screen").style.display = "none";
+        if(validNumber.test(signUpPhone.value)){
+            if(validPassword.test(signUpPass.value)){
+                if(validName.test(signUpName.value)){
+                    let users = {  
+                        "name":signUpName.value,
+                        "number":signUpPhone.value,
+                        "password":signUpPass.value
+                    }
+                    storeSignUp(users);
+                    alert("Sign up successful");
+                    document.getElementById('login').classList.add('active');
+                    document.getElementById('signup').classList.remove('active');
 
-const createAcc = document.querySelector(".login-signup-container .login-page figure a");
-const HaveAcc = document.querySelector(".login-signup-container .signup-page figure a");
-
-//new account event
-createAcc.addEventListener("click",()=> {
-    signUpPage.classList.add("active");
-    loginPage.classList.add("active");
-})
-
-//already hav account event
-HaveAcc.addEventListener("click",()=> {
-    signUpPage.classList.remove("active");
-    loginPage.classList.remove("active");
-});
-
-let LoginNumber = document.querySelector(".login-signup-container .login-page .details #login-number");
-let LoginPassword = document.querySelector(".login-signup-container .login-page .details #login-password");
-let loginBtn = document.querySelector(".login-signup-container .login-page .details button");
-
-let currentUser = [];
-//login button click event
-loginBtn.addEventListener("click",()=>{
-
-    let a = JSON.parse(localStorage.getItem("user"));
-
-    if(a==null){ 
-        document.querySelector('.loading-container').style.display = "flex";
-        setTimeout(()=>{
-            document.querySelector('.loading-container').style.display = "none";
-            document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `No User Found. Pls Sign up`;
-        },3000)
-    }
-    else{
-       for(let i=0;i<a.length;i++){
-           if(a[i].number == LoginNumber.value && a[i].password == LoginPassword.value){
-                currentUser.push(a[i]);
-                document.querySelector(".container .profile-container .profile-page #pro-name").innerHTML = `Name: ${currentUser[0].name}`
-                document.querySelector(".container .profile-container .profile-page #pro-number").innerHTML = `Phone: ${currentUser[0].number}`
-                document.querySelector('.loading-container').style.display = "flex";
-                setTimeout(()=>{
-                    document.querySelector('.loading-container').style.display = "none";
-                    document.querySelector('.no-ticket-container').classList.add('down');
-                    document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Login Successfull😍`;
-                    setTimeout(()=>{
-                    document.querySelector('.no-ticket-container').classList.remove('down');
-                    document.querySelector('.no-ticket-container').classList.add('reverse');
-                    container.style.display = "block";
-                    bookContainer.classList.add("active");
-                    logSignContainer.classList.add("done");
-                    },1000)
-                    LoginNumber.value = "";
-                    LoginPassword.value = "";
-                },3000)
-                log_in = true;
-                break;
-            }
-        }
-
-        if(log_in == false){
-            document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid Credentials`;
-        }
-    } 
-});
-
-let signUpName = document.querySelector(".login-signup-container .signup-page .details #Name");
-let SignUpNumber = document.querySelector(".login-signup-container .signup-page .details #signup-number");
-let SignUpPassword = document.querySelector(".login-signup-container .signup-page .details #signup-pasword");
-
-let signUpBtn = document.querySelector(".login-signup-container .signup-page .details button");
-//sign up button click event
-signUpBtn.addEventListener("click",()=>{
-    
-    if(validNumber.test(SignUpNumber.value)){
-        if(validPassword.test(SignUpPassword.value)){
-            if(validName.test(signUpName.value)){
-                let users = {  
-                    "name":signUpName.value,
-                    "number":SignUpNumber.value,
-                    "password":SignUpPassword.value
                 }
-                storeSignUp(users);
-                document.querySelector('.loading-container').style.display = "flex";
-                setTimeout(()=>{
-                    document.querySelector('.loading-container').style.display = "none";
-                    document.querySelector('.no-ticket-container').classList.add('down');
-                    document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Account created Successfully😍`;
-                    setTimeout(()=>{
-                    document.querySelector('.no-ticket-container').classList.remove('down');
-                    document.querySelector('.no-ticket-container').classList.add('reverse');
-                    },1000)
-                    signUpPage.classList.remove("active");
-                    loginPage.classList.remove("active");
-                    signUpName.value = '';
-                    SignUpNumber.value = '';
-                    SignUpPassword.value = '';
-                },3000) 
+                else{
+                    alert("Invalid Name");
+                }
             }
             else{
-                document.querySelector('.no-ticket-container').classList.add('down');
-                document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Name should be atleast 3 characters`;
-            } 
+                alert("Invalid Password");
+            }
         }
         else{
-            document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Password should be atleast 8 characters`;
+            alert("Invalid Phone Number");
         }
-    }
-    else{
-        document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid Number`;
-    }
-    
+    },3000);
 });
 
+const loginPage = document.querySelector('#login');
 function show(){
-    if(!loginPage.classList.contains("active")){
-        if(LoginPassword.type === "password"){
-            LoginPassword.type = "text";
+    if(loginPage.classList.contains('active')){
+        if(loginPass.type === "password"){
+            loginPass.type = "text";
         }
         else {
-            LoginPassword.type = "password";
+            loginPass.type = "password";
         }
     }  
     else{
-        if(SignUpPassword.type === "password"){
-            SignUpPassword.type = "text";
+        if(signUpPass.type === "password"){
+            signUpPass.type = "text";
         }
         else{
-            SignUpPassword.type = "password";
+            signUpPass.type = "password";
         }  
     }
 }
 
+let data = trains;
+let routes = [...suggestion];
+const suggestionsFrom =  document.querySelector(".sug-from");
+const suggestionsTo =  document.querySelector(".sug-to");
+const boardingStation = document.querySelector('#book-ticket form #from');
+const destinationStation = document.querySelector('#book-ticket form #to');
+
+function displaySuggestionsUp(items,isBoarding) {
+
+    if(isBoarding){
+        suggestionsFrom.innerHTML = ""; // Clear previous suggestions
+        if (items.length === 0) {
+            suggestionsFrom.style.display = "none";
+            return;
+        }
+        items.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                    li.addEventListener("click", function () {
+                        boardingStation.value = item; // Set input to selected item
+                        suggestionsFrom.innerHTML = "";
+                        suggestionsFrom.style.display = "none";
+                    });
+                    suggestionsFrom.appendChild(li);
+        });
+        suggestionsFrom.style.display = "block"; // Show the list
+    }
+    else{
+        suggestionsTo.innerHTML = ""; // Clear previous suggestions
+        if (items.length === 0) {
+            suggestionsTo.style.display = "none";
+            return;
+        }
+        items.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            li.addEventListener("click", function () {
+                destinationStation.value = item; // Set input to selected item
+                suggestionsTo.innerHTML = "";
+                suggestionsTo.style.display = "none";
+            });
+            suggestionsTo.appendChild(li);
+        });
+        suggestionsTo.style.display = "block"; // Show the list
+    }
+}
+
+boardingStation.addEventListener('input', () => {
+    const query = boardingStation.value.trim().toUpperCase();
+    if(query) {
+        const filteredSuggestions = routes.filter(item => item.includes(query));
+        displaySuggestionsUp(filteredSuggestions,true);  
+    }
+    else {
+        suggestionsFrom.innerHTML = "";
+        suggestionsFrom.style.display = "none";
+    }
+});
+
+destinationStation.addEventListener('input', () => {
+    const query = destinationStation.value.trim().toUpperCase();
+    if(query) {
+        const filteredSuggestions = routes.filter(item => item.includes(query));
+        
+        displaySuggestionsUp(filteredSuggestions,false);  
+    }
+    else {
+        suggestionsTo.innerHTML = "";
+        suggestionsTo.style.display = "none";
+    }
+});
+
+function generatePNR(){
+    let pnr = Math.floor(Math.random() * 10_0_0_0_0_0_0_0_0_0);
+
+    return pnr;
+}
 
 function storeTicketDetail(newT){
     let ticketDetails = JSON.parse(localStorage.getItem("tickets")) || [];
@@ -203,382 +194,182 @@ function storeTicketDetail(newT){
     localStorage.setItem("tickets", JSON.stringify(ticketDetails));
 }
 
+function generateTicket(){
+    let TicketNo = Math.floor(Math.random() * 60) + 1;
+    return TicketNo;
+} 
+let generatedTicketNo = generateTicket();
 
-//function to generate random pnr number
-function generatePNR(){
-    let pnr = Math.floor(Math.random() * 10_0_0_0_0_0_0_0_0_0);
-
-    return pnr;
+function generateberth(){
+    let availableBerth = ['L','M','U',"SL",'SL'];
+    let randomBerth = availableBerth[Math.floor(Math.random() * availableBerth.length)];
+    return randomBerth;
 }
-
-let routes = [...suggestion];
-
+let generatedBerth = generateberth(); //stored in generatedBerth
 
 
-const suggestions =  document.querySelector("#suggestions");
+let dateObj = new Date();
+let currentYear = dateObj.getFullYear();
+let currentMonth = dateObj.getMonth() + 1;
+let currentDate = dateObj.getDate();
 
-boardingStation.addEventListener("input", () => {
-    const query = boardingStation.value.trim().toUpperCase();
-    if(query) {
-        const filteredSuggestions = routes.filter(item => item.includes(query));
-        
-        displaySuggestionsUp(filteredSuggestions);  
-    }
-    else {
-        suggestions.innerHTML = "";
-        suggestions.style.display = "none";
-    }
-})
+const doj = document.querySelector('#book-ticket form #date');
+const quota = document.querySelector('#book-ticket form #Quota');
+const bookingBtn = document.querySelector('#book-ticket button');
 
-function displaySuggestionsUp(items) {
-    suggestions.innerHTML = ""; // Clear previous suggestions
-    if (items.length === 0) {
-        suggestions.style.display = "none";
+//booking event handle
+bookingBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if(!login){
+        alert("Please login first");
         return;
     }
-    items.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        li.addEventListener("click", function () {
-            boardingStation.value = item; // Set input to selected item
-            suggestions.innerHTML = "";
-            suggestions.style.display = "none";
-        });
-        suggestions.appendChild(li);
-    });
-    suggestions.style.display = "block"; // Show the list
-}
+    let arr = doj.value.split("-");
+    let date = arr[2];
+    let month = arr[1];
+    let year = arr[0];
+    if(date!=null && boardingStation.value!='' && destinationStation.value!=''){
+        if(date>=currentDate || month>currentMonth || year>currentYear){
+            let TrainAvaiable = false;
 
-
-
-const suggestionsDes =  document.querySelector(".suggestions");
-
-destinationStation.addEventListener("input", () => {
-    const query = destinationStation.value.trim().toUpperCase();
-    if(query) {
-        const filteredSuggestions = routes.filter(item => item.includes(query));
-        
-        displaySuggestionsDown(filteredSuggestions);  
+            document.getElementById("loading-screen").style.display = "flex";
+            document.querySelector("#loading-screen p").textContent = 'Booking your ticket, please wait...';
+            setTimeout(() => {
+                data.map((val)=>{
+                    if(val.source == boardingStation.value.toLowerCase() && val.destination == destinationStation.value.toLowerCase()){
+                        TrainAvaiable = true;
+                        let pnr = generatePNR();
+                        let obj = {
+                            "train_no": val.Train_no,
+                            "train_name": val.Train_name,
+                            "class": quota.value,
+                            "source": val.source,
+                            "destination": val.destination,
+                            "timings": val.departure_time + " : " + val.arrival_time,
+                            "seatNo" : generatedTicketNo + "/" + generatedBerth,
+                            "pnr": pnr,
+                            "date": date + "-" + month + "-" + year,
+                        }
+                        storeTicketDetail(obj);                       
+                            window.location.href = "booking_details.html";
+                            // Populate booking details
+                    }
+                });
+                document.getElementById("loading-screen").style.display = "none";
+                if(!TrainAvaiable){
+                    alert("No Train Available");
+                }
+            }, 3000); // 3-second delay
+        }
+        else{
+            alert('date should not be in past');
+        }
     }
-    else {
-        suggestionsDes.innerHTML = "";
-        suggestionsDes.style.display = "none";
+    else{
+        alert('Please fill all the fields');
     }
-})
+});
 
+let pnrInput = document.querySelector('#pnr-status form div #pnr');
+let pnrBtn = document.querySelector('#pnr-status form button');
 
+//pnr event handle
+pnrBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById("loading-screen").style.display = "flex";
+    document.querySelector("#loading-screen p").textContent = 'Fetching Pnr, please wait...';
+    setTimeout(() => {
+        document.getElementById("loading-screen").style.display = "none";
+        let pnr = pnrInput.value;
+        let tickets = JSON.parse(localStorage.getItem('tickets'));
+        let ticket = tickets.find((val) => val.pnr == pnr);
+        if(ticket){
+         document.querySelector('#pnr-status #pnr-details').style.display = "flex";
+         document.querySelector('#pnr-status #pnr-details ul #pnr-number').textContent = ticket.pnr;
+         document.querySelector('#pnr-status #pnr-details ul #train-name').textContent = ticket.train_name + " - " + ticket.train_no;
+         document.querySelector('#pnr-status #pnr-details ul #journey-date').textContent = ticket.date;
+         document.querySelector('#pnr-status #pnr-details ul #boarding-station').textContent = ticket.source;
+         document.querySelector('#pnr-status #pnr-details ul #destination-station').textContent = ticket.destination;
+         document.querySelector('#pnr-status #pnr-details ul #ticket-status').textContent = 'CNF';
+        }
+        else{
+         document.querySelector('#pnr-status #pnr-details').style.display = "none";
+         alert('pnr not found');
+        }
+    },3000);
+});
 
-
-function displaySuggestionsDown(items) {
-    suggestionsDes.innerHTML = ""; // Clear previous suggestions
-    if (items.length === 0) {
-        suggestionsDes.style.display = "none";
-        return;
+let Trains = AvaTrain;
+const trainSuggestions = document.getElementById("trainSuggestions");
+let trainInput = document.querySelector('#search-train form div #train-name');
+trainInput.addEventListener('input', () => {
+    let query = trainInput.value.toLowerCase();
+    if(query){
+        let filteredTrains = Trains.filter(train => train.includes(query));
+        displayTrains(filteredTrains);
     }
-    items.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        li.addEventListener("click", function () {
-            destinationStation.value = item; // Set input to selected item
-            suggestionsDes.innerHTML = "";
-            suggestionsDes.style.display = "none";
-        });
-        suggestionsDes.appendChild(li);
-    });
-    suggestionsDes.style.display = "block"; // Show the list
-}
-
-let TrainAva = AvaTrain;
-
-
-const trainSuggestions = document.querySelector("#trainSuggestions");
-
-trainNo.addEventListener("input", ()=>{
-    const query = trainNo.value.trim();
-    if(query) {
-        const filteredSuggestions = TrainAva.filter(item => item.includes(query));
-        display(filteredSuggestions);
-    }
-    else {
+    else{
         trainSuggestions.innerHTML = "";
         trainSuggestions.style.display = "none";
     }
 });
 
-function display(item){
-    trainSuggestions.innerHTML = ""; // Clear previous suggestions
-    if (item.length === 0) {
+function displayTrains(item) {
+    trainSuggestions.innerHTML = "";
+    if(item.length === 0) {
         trainSuggestions.style.display = "none";
         return;
     }
-    item.forEach(item => {
-        const li = document.createElement("li");
-        li.innerHTML = item;
-        li.addEventListener("click", ()=>{
-            newitem = item.split("-");   
-            trainNo.value = +newitem[0]; // Set input to selected item
-            trainSuggestions.innerHTML = "";
+    item.forEach(val => {
+        let li = document.createElement('li');
+        li.textContent = val;
+        li.addEventListener('click', () => {
+            trainInput.value = val.split('-')[0];
+            trainSuggestions.textContent = "";
             trainSuggestions.style.display = "none";
-        })
+        });
         trainSuggestions.appendChild(li);
-    })
+    });
     trainSuggestions.style.display = "block";
 }
 
-bookingbtn.addEventListener("click",(e)=>{
+let trainBtn = document.querySelector('#search-train form button');
+
+//train event handle
+trainBtn.addEventListener('click', function(e){
     e.preventDefault();
-    
-    let arr = SelectedDate.value.split("-");
-    let date = arr[2];
-    let month = arr[1];
-    let year = arr[0];
-
-    if(date!=null && boardingStation.value!='' && destinationStation.value!=''){
-         if(date>=currentDate && month>=currentMonth && year>=currentYear){
-                let TrainAvaiable = false;
-                data.map((val)=>{
-                    if(val.source == boardingStation.value.toLowerCase() && val.destination == destinationStation.value.toLowerCase()){
-                        TrainAvaiable = true;
-                        document.querySelector('.loading-container').style.display = "flex";
-                        bookContainer.style.opacity = ".5";
-                        setTimeout(()=>{
-                            document.querySelector('.loading-container').style.display = "none";
-                            bookContainer.style.opacity = "1";
-                            bookingForm.classList.add("media");
-                            ticketContainer.style.display = "block";
-                        },3000)
-                        let PnrG = generatePNR(); 
-                        BookedTicketTrain.textContent = `Train Name : ${val.Train_name.toUpperCase()}`;
-                        BookedTrainNo.textContent = `TRAIN NO : ${val.Train_no}`;
-                        BookedTicketPnr.textContent = `PNR NO : ${PnrG}`;
-                        BookedTicketSrc.textContent = `From : ${val.source}`;
-                        BookedTicketDes.textContent = `To : ${val.destination}`;
-                        Berthdetails.textContent = `Seat : ${generatedTicketNo}/${generatedBerth}`;
-                        BookedTicketClass.textContent = `Class : ${SelectedClass.value}`;
-                        BookedTicketDate.textContent = `Date : ${SelectedDate.value}`;
-
-                        let obj = {
-                            "train_no": val.Train_no,
-                            "train_name": val.Train_name,
-                            "class": SelectedClass.value,
-                            "source": val.source,
-                            "destination": val.destination,
-                            "timings": val.departure_time + " : " + val.arrival_time,
-                            "seatNo" : generatedTicketNo + "/" + generatedBerth,
-                            "pnr": PnrG,
-                            "date": date + "-" + month + "-" + year,
-                        }
-                        storeTicketDetail(obj);
-                    } 
-                })
-                if(!TrainAvaiable){
-                    document.querySelector('.loading-container').style.display = "flex";
-                    bookContainer.style.opacity = ".5";
-                    setTimeout(()=>{
-                        document.querySelector('.loading-container').style.display = "none";
-                        document.querySelector('.no-ticket-container').classList.add('down');
-                        document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `NO TRAINS AVAILABLE FOR THIS ROUTE`;
-                    },3000)
-                    bookContainer.style.opacity = "1";
-                }                        
-         }
-        else{
-            document.querySelector('.loading-container').style.display = "flex";
-                    setTimeout(()=>{
-                        document.querySelector('.loading-container').style.display = "none";
-                        document.querySelector('.no-ticket-container').classList.add('down');
-                        document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Date should not be in past`;
-                    },3000)
+    document.getElementById("loading-screen").style.display = "flex";
+    document.querySelector("#loading-screen p").textContent = 'Fetching Train, please wait...';
+    setTimeout(() => {
+        document.getElementById("loading-screen").style.display = "none";
+        if(trainInput.value == ""){
+         document.querySelector('#search-train #train-details').style.display = "none";
+            alert('Please enter train name');
+            return;
         }
+        let query = data.find(val => val.Train_no === Number(trainInput.value));
+        
+        if(query){
+            document.querySelector('#search-train #train-details').style.display = "flex";
+            document.querySelector('#search-train #train-details ul #train-number').textContent = query.Train_no;
+            document.querySelector('#search-train #train-details ul #train-name').textContent = query.Train_name;
+            document.querySelector('#search-train #train-details ul #boarding-station').textContent = query.source;
+            document.querySelector('#search-train #train-details ul #destination-station').textContent = query.destination;
+            document.querySelector('#search-train #train-details ul #schedule').textContent = query.sehedule;
         }
-        else{
-            document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Please enter all fields`;
+        else {
+         document.querySelector('#search-train #train-details').style.display = "none";
+         alert('Train not found');
         }
+
+    },3000);
 });
 
-document.querySelector(".no-ticket-container i").addEventListener("click",()=>{
-    document.querySelector('.no-ticket-container').classList.add("reverse");
-    document.querySelector('.no-ticket-container').classList.remove("down");
-    
-})
+let stationSug = stations;
+let stationInput = document.getElementById('station-name');
+let stationSuggList = document.getElementById('stationSuggestions');
 
-//pnr status check event
-const currentPnrStatus = document.querySelector(".pnr-check .pnr-status");
-pnrStatus.addEventListener("click",()=>{
-    pnrContainer.classList.add("active");
-    bookContainer.classList.remove("active");
-    train_container.classList.remove("active");
-    currentPnrStatus.style.display = "none";
-    StationSearchPage.classList.remove("active");
-    profilePage.classList.remove("active");
-});
-
-const mediaPnr = document.querySelector(".container .menu-container #media-pnr");
-const pnrForm = document.querySelector(".container .pnr-check form");
-
-//mediaquery pnr status event
-mediaPnr.addEventListener("click",()=>{
-    pnrContainer.classList.add("active");
-    bookContainer.classList.remove("active");
-    train_container.classList.remove("active");
-    currentPnrStatus.classList.remove("active");
-    pnrForm.classList.remove("hide");
-    profilePage.classList.remove("active");
-})
-
-pnrbtn.addEventListener("click",(e)=>{
-    e.preventDefault();
-let pnrfound = false;
-    let b = JSON.parse(localStorage.getItem("tickets"));
-
-try{
-    for(let i=0;i<b.length;i++){
-        if(b[i].pnr == pnrEntered.value){
-            document.querySelector('.loading-container').style.display = "flex";
-            setTimeout(()=>{
-                document.querySelector('.loading-container').style.display = "none";
-                currentPnrStatus.classList.add("active");
-            },3000)
-            pnrTrainNo.innerHTML = `TrainNo: ${b[i].train_no}`;
-            pnrDisply.innerHTML = `PNR: ${b[i].pnr}`;
-            pnrTrainName.innerHTML = `Train - ${b[i].train_name}`;
-            pnrSource.innerHTML = b[i].source;
-            pnrDestination.innerHTML = b[i].destination;
-            pnrSeat.innerHTML = b[i].seatNo;
-            pnrClass.innerHTML = b[i].class;
-            pnrDate.innerHTML = b[i].date;
-            pnrTtainTime.innerHTML = `Time : ${(b[i].timings).split(":").slice(0,2).join(":")}`;
-            pnrfound = true;
-            pnrForm.classList.add("hide");
-            break;
-        }
-    }
-}
-catch(err){
-}
-    if(!pnrfound){
-        document.querySelector('.loading-container').style.display = "flex";
-                setTimeout(()=>{
-                    document.querySelector('.loading-container').style.display = "none";
-                    document.querySelector('.no-ticket-container').classList.add('down');
-                    document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid PNR `;
-                },3000)
-    }
-   
-});
-
-// search train event
-let train_container = document.querySelector(".train-container");
-searchTrain.addEventListener("click",()=>{
-    train_container.classList.add("active");
-    bookContainer.classList.remove("active");
-    pnrContainer.classList.remove("active");
-    StationSearchPage.classList.remove("active");
-    profilePage.classList.remove("active");
-});
-
-let locationBtn = document.querySelector(".train-container .search-train #live-btn");
-let locationContainer = document.querySelector(".train-container .location-container");
-
-locationBtn.style.display = "none"
-
-locationBtn.addEventListener("click",()=>{
-    locationContainer.style.display = "block";
-});
-
-document.querySelector(".train-container .location-container #into").addEventListener("click",()=>{
-    locationContainer.style.display = "none";
-})
-
-let firstS = document.querySelector(".location-container .box #first");
-let middleS = document.querySelector(".location-container .box #middle");
-let lastS = document.querySelector(".location-container .box #last");
-
-
-TrainSearchBtn.addEventListener("click",()=>{
-    if(trainNo.value==''){
-        document.querySelector('.loading-container').style.display = "flex";
-        setTimeout(()=>{
-            document.querySelector('.loading-container').style.display = "none";
-            document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Pls Enter Train Number`;
-        },3000)
-        return;
-    }
-
-   let trainFound = false;
-    data.map((val)=>{
-        if(val.Train_no == trainNo.value){
-            document.querySelector('.loading-container').style.display = "flex";
-            setTimeout(()=>{
-                document.querySelector('.loading-container').style.display = "none";
-                locationBtn.style.display = "block";
-                searchTrainResult.innerHTML = `
-                <p>${trainNo.value} - ${val.Train_name}</p>
-                <p>${val.source} -  ${val.destination} </p>
-                <p>Arrival:${val.arrival_time} -  Departure:${val.departure_time} </p> 
-                <p> Schedule - ${val.sehedule} </p>`;
-            },3000)
-            firstS.innerHTML = `${val.source} - ${val.departure_time}`;
-            middleS.innerHTML = `${val.middle_station} - ${Number(val.departure_time[1]) + 3}:40 am`;
-            lastS.innerHTML = `${val.destination} - ${val.arrival_time}`;
-            trainFound = true;
-        }
-    });
-    
-
-   if(!trainFound){
-    document.querySelector('.loading-container').style.display = "flex";
-    setTimeout(()=>{
-        document.querySelector('.loading-container').style.display = "none";
-        document.querySelector('.no-ticket-container').classList.add('down');
-        document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Train is currently not available`;
-    },3000)
-   }
-
-});
-
-//station searching..
-const StationSearchPage = document.querySelector(".container .station-container");
-const mediaStation = document.querySelector(".container .menu #media-station");
-mediaStation.addEventListener("click",()=>{
-    StationSearchPage.classList.add("active");
-    train_container.classList.remove("active");
-    bookContainer.classList.remove("active");
-    pnrContainer.classList.remove("active");
-    profilePage.classList.remove("active");
-})
-
-
-searchStation.addEventListener("click", ()=> {
-    StationSearchPage.classList.add("active");
-    train_container.classList.remove("active");
-    bookContainer.classList.remove("active");
-    pnrContainer.classList.remove("active");
-    profilePage.classList.remove("active");
-})
-
-
-let stationSugg = stations;
-
-let stationSuggList = document.querySelector('.search-station #stationSuggestions');
-
-let stationInput = document.querySelector(".search-station input");
-
-stationInput.addEventListener("input", ()=> {
-    let query = stationInput.value.trim().toUpperCase();
-    if(query){
-        let suggestions = stationSugg.filter(val => val.Station_name.toUpperCase().includes(query) || val.Station_code.includes(query));
-        displayStation(suggestions);
-    }
-    else {
-        stationSuggList.innerHTML = "";
-        stationSuggList.style.display = "none";
-    }     
-})
-
-function displayStation(item){
+function displayStation(item) {
     stationSuggList.innerHTML = ""; // Clear previous suggestions
     if (item.length === 0){
         stationSuggList.style.display = "none";
@@ -598,128 +389,43 @@ function displayStation(item){
     stationSuggList.style.display = "block";
 }
 
-let stationbtn = document.querySelector(".search-station button");
-
-stationbtn.addEventListener("click", ()=>{
-    let station = stationInput.value.trim();
+stationInput.addEventListener('input', function(){
+    let station = stationInput.value.toUpperCase();
     if(station){
-        let stationData = stationSugg.find(val => val.Station_name === station || val.Station_code === station);
-        if(stationData){
-            document.querySelector('.loading-container').style.display = "flex";
-            setTimeout(()=>{
-                document.querySelector('.loading-container').style.display = "none";
-                document.querySelector("#station-search-result").innerHTML = `
-                <h2>Station Details</h2>
-                <p>Station Code : ${stationData.Station_code}</p>
-                <p>Station Name : ${stationData.Station_name}</p>
-                <a href="${stationData.Location}" target="_blank">Location</a>
-                `
-            },2000)
-        }
-        else{
-            document.querySelector('.loading-container').style.display = "flex";
-            setTimeout(()=>{
-                document.querySelector('.loading-container').style.display = "none";
-                document.querySelector('.no-ticket-container').classList.add('down');
-                document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Invalid Station`;
-            },2000)
-        }
+        let match = stationSug.filter(val => val.Station_code.includes(station) || val.Station_name.toUpperCase().includes(station));
+        displayStation(match)
     }
-    else{
-        setTimeout(()=>{
-            document.querySelector('.no-ticket-container').classList.add('down');
-            document.querySelector('.no-ticket-container .no-ticket-msg').innerHTML = `Enter Station Name or Code`;
-        })
+    else {
+        stationSuggList.innerHTML = "";
+        stationSuggList.style.display = "none";
     }
+});
+
+let stationBtn = document.querySelector('#search-station form button');
+
+//station event handle
+stationBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById("loading-screen").style.display = "flex";
+    document.querySelector("#loading-screen p").textContent = 'Fetching Station, please wait...';
+    let station = stationInput.value.trim();
+    setTimeout(() => {
+        document.getElementById("loading-screen").style.display = "none";
+        if(station == ""){
+            document.getElementById('station-details').style.display = 'none';
+            alert('Please enter station name');
+            return;
+        }
+        let query = stationSug.find(val => val.Station_name == station);
+        if(query){
+            
+            document.getElementById('station-details').style.display = 'flex';
+            document.getElementById('station-code').textContent = query.Station_code;
+            document.getElementById('Station-name').textContent = query.Station_name;
+        }
+        else {
+            document.getElementById('station-details').style.display = 'none';
+            alert('Please enter a station name');
+        }
+    },3000);
 })
-
-//profile
-const profileBtn = document.querySelector(".container header #profile-btn");
-const profilePage = document.querySelector(".container .profile-container");
-profileBtn.addEventListener("click", ()=> {
-    profilePage.classList.add("active");
-    StationSearchPage.classList.remove("active");
-    train_container.classList.remove("active");
-    bookContainer.classList.remove("active");
-    pnrContainer.classList.remove("active");
-})
-
-const logoutBtn = document.querySelector(".container .profile-container .profile-page button");
-logoutBtn.addEventListener("click", ()=>{
-    container.style.display = "none";
-    loginPage.classList.remove("active");
-    logSignContainer.classList.remove("done");
-})
-
-const mediaProfile = document.querySelector(".container .menu #media-profile");
-mediaProfile.addEventListener("click", ()=> {
-    profilePage.classList.add("active");
-    StationSearchPage.classList.remove("active");
-    train_container.classList.remove("active");
-    bookContainer.classList.remove("active");
-    pnrContainer.classList.remove("active");
-});
-
-function storeSignUp(newobj){
-    let existing = JSON.parse(localStorage.getItem("user")) || [];
-    existing.push(newobj);
-    localStorage.setItem("user", JSON.stringify(existing));
-}
-
-//function to generate random ticket number
-function generateTicket(){
-    let TicketNo = Math.floor(Math.random() * 60) + 1;
-    return TicketNo;
-} 
-let generatedTicketNo = generateTicket(); //stored generated ticket number in generatedTicketNo
-
-//function to generate random berth type
-function generateberth(){
-    let availableBerth = ['L','M','U',"SL",'SL'];
-    let randomBerth = availableBerth[Math.floor(Math.random() * availableBerth.length)];
-    return randomBerth;
-}
-let generatedBerth = generateberth(); //stored in generatedBerth
-
-
-
-//media query
-let menubtn = document.querySelector(".container .menu #menu-btn");
-let menuContainer = document.querySelector(".container .menu");
-let menuItems = document.querySelector(".container .menu .menu-container");
-menubtn.addEventListener("click",()=>{
-    menuContainer.classList.toggle("active");
-    menuItems.style.display = "flex";
-});
-
-let mediaBookPage = document.querySelector(".container .menu #media-book");
-
-let bookedPage = document.querySelector(".container .book-ticket .booking-details");
-
-mediaBookPage.addEventListener("click",()=>{
-    bookContainer.classList.add("active");
-    pnrContainer.classList.remove("active");
-    train_container.classList.remove("active");
-    bookingForm.classList.remove("media");
-    bookedPage.style.display = "none";
-});
-
-let bookingForm = document.querySelector(".container .book-ticket form");
-
-
-let mediaSearchPage = document.querySelector(".container .menu #media-search");
-mediaSearchPage.addEventListener("click",()=>{
-    bookContainer.classList.remove("active");
-    pnrContainer.classList.remove("active");
-    train_container.classList.add("active");
-    profilePage.classList.remove("active");
-    StationSearchPage.classList.remove("active");
-});
-
-bookTicket.addEventListener("click",()=>{
-    bookContainer.classList.add("active");
-    pnrContainer.classList.remove("active");
-    train_container.classList.remove("active");
-    bookedPage.style.display = "none";
-    StationSearchPage.classList.remove("active");
-});
